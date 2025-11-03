@@ -1,0 +1,57 @@
+<ion-header >
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end">
+      <ion-button routerLink="/home">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+ <img slot="start" src="assets/images/logo-without-back.png" alt="App Logo" class="app-logo" />
+    <ion-title slot="start">Real Makeup Studio ✨</ion-title>
+   
+  </ion-toolbar>
+</ion-header>
+
+
+  
+   <ion-content class="ion-padding">
+    <!-- کارت کیف پول -->
+    <div class="wallet-card">
+      <p class="wallet-label">Wallet balance</p>
+      <h1>$0.00</h1>
+      <ion-button fill="outline" size="small" class="wallet-btn">View Wallet</ion-button>
+    </div>
+  
+    <!-- منوی اصلی -->
+    <div class="menu-section">
+  
+      <ion-item button lines="none">
+        <ion-icon name="bag-handle-outline" slot="start"></ion-icon>
+        <ion-label>Orders</ion-label>
+        <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+      </ion-item>
+
+    </div>
+  
+    <!-- منوی پشتیبانی -->
+    <div class="menu-section">
+      <ion-item button lines="none">
+        <ion-icon name="help-circle-outline" slot="start"></ion-icon>
+        <ion-label>Support</ion-label>
+        <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+      </ion-item>
+
+    </div>
+  
+    <!-- دکمه خروج -->
+
+    <div class="menu-section">
+        <ion-item button lines="none">
+          <ion-icon name="log-out-outline" slot="start"></ion-icon>
+          <ion-label color="danger">Sign Out</ion-label>
+          <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+        </ion-item>
+      </div>
+   </ion-content>
+
+
+

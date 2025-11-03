@@ -1,0 +1,7 @@
+{
+  "name": "closetAI",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

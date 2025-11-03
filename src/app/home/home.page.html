@@ -1,0 +1,43 @@
+<ion-header translucent> 
+  <ion-toolbar class="dark-toolbar">
+    <div class="toolbar-content">
+      <img src="assets/images/logo1.png" alt="App Logo" class="app-logo" />
+      <ion-title class="app-title">ClosetAI</ion-title>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="home-content fullscreen">
+  <div class="intro-section">
+    <h1 class="main-title">Welcome to 
+      <br />
+      <span>ClosetAI</span>
+    </h1>
+    <p class="subtitle">
+      Try outfits on yourself with AI.<br />
+      Choose your style — for <b>Women</b> or <b>Men</b>.
+    </p>
+  </div>
+
+  <div class="card-container">
+    <ion-card class="option-card" (click)="goToPage('outfit-women')">
+      <img src="./../../assets/styles/women/women.jpg" alt="Women" />
+      <ion-card-header>
+        <ion-card-title>Women</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Dresses, Tops, Pants, and more
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="option-card" (click)="goToPage('outfit')">
+      <img src="./../../assets/styles/men/men.jpg" alt="Men" />
+      <ion-card-header>
+        <ion-card-title>Men</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Shirts, Jackets, Trousers, and more
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

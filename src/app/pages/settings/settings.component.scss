@@ -1,0 +1,112 @@
+.app-logo {
+  width: 50px;
+  margin:5px;
+  object-fit: contain;
+  margin-left: 5px;
+}
+
+.app-title {
+  font-weight: 700;
+  font-size: 20px;
+  color: #e6564c;
+  text-align: left;
+}
+
+
+
+
+
+
+    .profile-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 16px;
+
+        .profile-info {
+            text-align: start;
+
+            h2 {
+                margin: 0;
+                font-size: 22px;
+                font-weight: bold;
+            }
+
+            p {
+                margin: 4px 0 0;
+                color: gray;
+                font-size: 14px;
+            }
+        }
+
+        .profile-avatar {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    .wallet-card {
+        background: linear-gradient(135deg, #f43867, #f48fb1);
+        border-radius: 16px;
+        padding: 20px;
+        color: white;
+        text-align: center;
+        margin-bottom: 24px;
+
+        .wallet-label {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        h1 {
+            margin: 8px 0;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .wallet-btn {
+            margin-top: 10px;
+            --color: white;
+            --border-color: white;
+            --background: transparent;
+            --border-radius: 20px;
+            font-size: 14px;
+        }
+    }
+
+    .menu-section {
+        background: var(--ion-color-step-50);
+        border-radius: 16px;
+        padding: 0;
+        box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.05);
+        margin-bottom: 16px;
+
+        ion-item {
+            --padding-start: 16px;
+            --inner-padding-end: 8px;
+            --min-height: 56px;
+            font-size: 16px;
+            font-weight: 500;
+            --background: transparent;
+
+            ion-icon {
+                font-size: 22px;
+                color: var(--ion-color-primary);
+            }
+
+            ion-label {
+                margin-inline-start: 12px;
+            }
+        }
+    }
+
+    .logout-section {
+        margin-top: 32px;
+        text-align: center;
+
+        .logout-btn {
+            color: var(--ion-color-primary);
+            font-weight: bold;
+            font-size: 16px;
+        }
+    }
