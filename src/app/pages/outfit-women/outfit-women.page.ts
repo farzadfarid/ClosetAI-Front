@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
   IonHeader, IonContent, IonToolbar, IonTitle, IonButtons, IonButton, IonToggle,
-  IonIcon, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonNote, IonSegmentButton, IonLabel, IonSegment } from '@ionic/angular/standalone';
+  IonIcon, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonNote,
+  IonSegment, IonSegmentButton, IonLabel
+} from '@ionic/angular/standalone';
 import { RouterLink } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { UploadService, UploadResponse } from 'src/app/services/upload';
 import { buildWomenOutfitPrompt, WomenOutfitParams } from 'src/app/models/outfit-params-women';
 import { ToastService } from 'src/app/services/toast';
-
 import { addIcons } from 'ionicons';
 import { cloudUploadOutline, downloadOutline, homeOutline } from 'ionicons/icons';
 import {
@@ -32,13 +33,13 @@ import {
   WOMEN_SNEAKERS,
   WOMEN_BOOTS,
   WOMEN_SANDALS,
-  MEN_BACKGROUNDS,
-  type WomenCategory,
-  type TitleCategory,
   WOMEN_BAGS,
   WOMEN_JEWELRY,
   WOMEN_SCARVES,
-  WOMEN_HATS
+  WOMEN_HATS,
+  MEN_BACKGROUNDS,
+  type WomenCategory,
+  type TitleCategory
 } from 'src/app/mock/outfit-options';
 import { LoadingComponent } from 'src/app/Core/Components/loading/loading.component';
 import { lastValueFrom } from 'rxjs';
@@ -50,27 +51,34 @@ type WomenCategoryKey = typeof WOMEN_CATEGORIES[number]['key'];
   templateUrl: './outfit-women.page.html',
   styleUrls: ['./outfit-women.page.scss'],
   standalone: true,
-  imports: [IonSegment, 
-    IonNote, IonCardContent, IonCardTitle, IonCardHeader, IonCard,
-    CommonModule, FormsModule,
-    IonHeader, IonContent, IonToolbar, IonTitle, IonButtons, IonButton, IonIcon,
-    RouterLink, LoadingComponent, IonToggle,IonSegmentButton,IonLabel
+  imports: [
+    IonNote, IonCardContent, IonCardTitle,
+    IonCardHeader, IonCard, CommonModule, FormsModule, IonHeader, IonContent,
+    IonToolbar, IonTitle, IonButtons, IonButton, IonIcon, RouterLink, LoadingComponent, IonToggle
   ],
 })
 export class OutfitWomenPage {
   @ViewChild('userFileInput') userFileInput!: ElementRef<HTMLInputElement>;
+  @ViewChild('outfitFileInput') outfitFileInput!: ElementRef<HTMLInputElement>;
+
   isLoading = false;
-
   imageurl = environment.imageUrl;
-  previewUser: string | null = null;
-  processedPreview: string | null = null;
-  selectedUserFile: File | null = null;
-  colorPalettes: Record<string, string[]> = {};
-  selectedBackgroundPrompt: string | null = null;
-  isCreativeMode = false;
-    outputMode= 'single';
 
-  // دسته‌ها
+  previewUser: string | null = null;
+  previewOutfit: string | null = null;
+  processedPreview: string | null = null;
+
+  selectedUserFile: File | null = null;
+  selectedOutfitFile: File | null = null;
+
+  colorPalettes: Record<string, string[]> = {};
+  pendingColors: Record<string, string | null> = {};
+  selectedBackgroundPrompt: string | null = null;
+
+  isCreativeMode = false;
+  outputMode: 'single' | 'four-view' = 'single';
+
+  // 💄 دسته‌ها و آیتم‌های زنانه
   womenCategories = WOMEN_CATEGORIES;
   activeCategory: WomenCategoryKey = WOMEN_CATEGORIES[0]?.key as WomenCategoryKey;
   selectedStyle: WomenCategory | null = null;
@@ -78,7 +86,11 @@ export class OutfitWomenPage {
     WOMEN_CATEGORIES.map(cat => [cat.key, null])
   ) as Record<WomenCategoryKey, WomenCategory | null>;
 
-  // Map داده‌های هر کتگوری
+  private selectedItemPrompts: Record<WomenCategoryKey, string | null> = Object.fromEntries(
+    WOMEN_CATEGORIES.map(cat => [cat.key, null])
+  ) as Record<WomenCategoryKey, string | null>;
+
+  // داده‌ها
   private stylesByCategory: Record<WomenCategoryKey, TitleCategory[]> = {
     blouse: WOMEN_BLOUSES,
     tshirt: WOMEN_TSHIRTS,
@@ -110,7 +122,7 @@ export class OutfitWomenPage {
     colors: [],
     fit: 'Regular',
     accessories: [],
-    reference: { mode: 'preset', presetKey: 'Casual' }
+    reference: { mode: 'preset', presetKey: 'Casual' },
   };
 
   constructor(
@@ -121,34 +133,99 @@ export class OutfitWomenPage {
     addIcons({ cloudUploadOutline, downloadOutline, homeOutline });
   }
 
-  onOutputModeChange(ev: CustomEvent) {
-  this.outputMode = ev.detail.value as  'single'|'four-view' ;
-}
+  // -----------------------------
+  // 🔸 Helper functions
+  // -----------------------------
+  normalizeColorForTemplate(colorRaw: string | undefined, itemPromptTemplate: string): string | undefined {
+    if (!colorRaw) return colorRaw;
+    let color = colorRaw.trim();
+    const fabrics = ["silk", "cotton", "denim", "linen", "leather", "wool", "chiffon", "satin", "polyester"];
+    const lowerTemplate = itemPromptTemplate.toLowerCase();
+    for (const f of fabrics) {
+      if (lowerTemplate.includes(f)) {
+        color = color.replace(new RegExp(`\\b${f}\\b`, "ig"), "").replace(/\s{2,}/g, " ").trim();
+      }
+    }
+    return color;
+  }
 
+  private resolveItemPrompt(style: WomenCategory, categoryKey: WomenCategoryKey): string {
+    const userColorForCat = this.colorPalettes[categoryKey]?.[0];
+    const globalUserColor = this.outfitParams.colorName || this.outfitParams.color;
+    const defaultColor = (style as any).defaultColor || 'neutral tone';
+
+    const template = ((style as any).prompt || style.name || '').trim();
+    const rawColor = userColorForCat || globalUserColor || defaultColor;
+    const finalColor = this.normalizeColorForTemplate(rawColor, template) || 'neutral tone';
+
+    let p = template.includes('{color}')
+      ? template.replace(/\{color\}/gi, finalColor)
+      : `${finalColor} ${template}`;
+
+    const map: Record<string, string> = {
+      print: 'pattern',
+      logo: 'motif',
+      brand: 'motif',
+      text: 'design',
+      badge: 'motif',
+      emblem: 'motif',
+      graphic: 'artistic'
+    };
+    for (const [bad, safe] of Object.entries(map)) {
+      p = p.replace(new RegExp(`\\b${bad}\\b`, 'gi'), safe);
+    }
+
+    p = p.replace(/\s{2,}/g, ' ').trim();
+    return p;
+  }
+
+  // -----------------------------
+  // 🎨 رنگ
+  // -----------------------------
   getActiveCategoryColor(): string {
     const colors = this.colorPalettes[this.activeCategory];
     return colors && colors.length ? colors[0] : '#ffffff';
   }
 
-getAllSelectedColors(): string[] {
-  return Object.values(this.colorPalettes).flat();
-}
+  getAllSelectedColors(): string[] {
+    return Object.values(this.colorPalettes).flat();
+  }
 
   onSingleColorPicked(categoryKey: string, event: Event) {
     const color = (event.target as HTMLInputElement).value;
     if (!color) return;
     this.colorPalettes = { ...this.colorPalettes, [categoryKey]: [color] };
     this.outfitParams.colors = this.getAllSelectedColors();
-    this.cdRef.detectChanges(); 
-  }
+    this.outfitParams.color = color;
+    this.outfitParams.colorName = color;
 
-  removeSingleColorForCategory(categoryKey: string) {
-    const newPalettes = { ...this.colorPalettes };
-    delete newPalettes[categoryKey];
-    this.colorPalettes = newPalettes;
+    const selected = this.selectedStyles[categoryKey];
+    if (selected) {
+      this.selectedItemPrompts[categoryKey] = this.resolveItemPrompt(selected, categoryKey);
+    }
+
     this.cdRef.detectChanges();
   }
 
+  removeSingleColorForCategory(categoryKey: string) {
+    if (!this.colorPalettes[categoryKey]) return;
+    const newPalettes = { ...this.colorPalettes };
+    delete newPalettes[categoryKey];
+    this.colorPalettes = newPalettes;
+    this.outfitParams.color = undefined;
+    this.outfitParams.colorName = undefined;
+
+    const selected = this.selectedStyles[categoryKey];
+    if (selected) {
+      this.selectedItemPrompts[categoryKey] = this.resolveItemPrompt(selected, categoryKey);
+    }
+
+    this.cdRef.detectChanges();
+  }
+
+  // -----------------------------
+  // 📁 فایل‌ها
+  // -----------------------------
   async onUserFileSelected(ev: Event) {
     const file = (ev.target as HTMLInputElement).files?.[0] ?? null;
     this.selectedUserFile = file;
@@ -157,10 +234,23 @@ getAllSelectedColors(): string[] {
     this.cdRef.markForCheck();
   }
 
+  async onOutfitFileSelected(ev: Event) {
+    const file = (ev.target as HTMLInputElement).files?.[0] ?? null;
+    this.selectedOutfitFile = file;
+    this.previewOutfit = file ? URL.createObjectURL(file) : null;
+    this.cdRef.markForCheck();
+  }
+
+  // -----------------------------
+  // 🔹 انتخاب آیتم
+  // -----------------------------
   toggleCategory(key: WomenCategoryKey) {
     if (this.activeCategory === key) return;
     this.activeCategory = key;
     this.selectedStyle = null;
+    Object.keys(this.selectedItemPrompts).forEach(k => {
+      if (k !== key) this.selectedItemPrompts[k as WomenCategoryKey] = null;
+    });
   }
 
   getStylesForActiveCategory(): WomenCategory[] {
@@ -172,8 +262,10 @@ getAllSelectedColors(): string[] {
     const cat = this.activeCategory;
     const current = this.selectedStyles[cat];
     this.selectedStyles[cat] = current?.name === style.name ? null : style;
+    this.selectedItemPrompts[cat] = this.selectedStyles[cat]
+      ? this.resolveItemPrompt(this.selectedStyles[cat], cat)
+      : null;
 
-    // دسته‌بندی نوع لباس
     if (['blouse', 'tshirt', 'crop', 'sweater', 'jacket', 'hoodie', 'blazer', 'cardigan'].includes(cat))
       this.outfitParams.topType = this.selectedStyles[cat]?.name;
     else if (['pants', 'jeans', 'skirt', 'shorts'].includes(cat))
@@ -198,6 +290,13 @@ getAllSelectedColors(): string[] {
     return this.womenCategories.find(c => c.key === this.activeCategory)?.label ?? '';
   }
 
+  onOutputModeChange(ev: CustomEvent) {
+    this.outputMode = ev.detail.value as 'single' | 'four-view';
+  }
+
+  // -----------------------------
+  // ☁️ آپلود و پرامپت
+  // -----------------------------
   async uploadFile() {
     if (!this.selectedUserFile) return this.toast.showError('Please select your photo.');
     if (!this.hasAnySelection()) return this.toast.showError('Please select at least one outfit item.');
@@ -207,22 +306,36 @@ getAllSelectedColors(): string[] {
       this.processedPreview = null;
       this.cdRef.markForCheck();
 
-      const selectedNames = Object.entries(this.selectedStyles)
-        .filter(([key, s]) => !!s && key !== 'background')
-        .map(([_, s]) => (s as WomenCategory).name);
+      const itemPrompts = Object.entries(this.selectedItemPrompts)
+        .filter(([k, v]) => !!v && k !== 'background')
+        .map(([_, v]) => v!);
+
+      const mainColor =
+        this.outfitParams.colorName?.toLowerCase() ||
+        this.outfitParams.color?.toLowerCase() ||
+        'neutral tone';
+
+      const userHasColor = Boolean(this.outfitParams.colorName || this.outfitParams.color);
+      const promptsForApi = userHasColor
+        ? itemPrompts.map(p => p.includes('{color}') ? p.replace(/\{color\}/gi, mainColor) : p)
+        : itemPrompts;
 
       const prompt = buildWomenOutfitPrompt({
         outfitStyle: this.outfitParams.style,
-        outfit: { ...this.outfitParams, selectedItems: selectedNames },
+        outfit: { ...this.outfitParams, selectedItems: [] },
         colorPalettes: this.colorPalettes,
         selectedBackground: this.selectedStyles['background']?.name,
         selectedBackgroundPrompt: this.selectedBackgroundPrompt || undefined,
         isCreativeMode: this.isCreativeMode,
-        outputMode: this.outputMode as 'single' | 'four-view',
+        outputMode: this.outputMode,
+        itemPrompts: promptsForApi,
       });
 
       console.log('🧾 Prompt (Women):', prompt);
-      const res: UploadResponse = await lastValueFrom(this.uploadService.uploadImage(this.selectedUserFile, prompt));
+
+      const res: UploadResponse = await lastValueFrom(
+        this.uploadService.uploadImage(this.selectedUserFile, prompt)
+      );
 
       this.previewUser = URL.createObjectURL(this.selectedUserFile);
       if (res?.processed)
