@@ -913,17 +913,18 @@ export const WOMEN_DRESSES: WomenTitleCategory[] = [
         prompt:
           '{color} midi dress with long fitted sleeves, high neckline, and straight pencil silhouette; mid-calf length with smooth knit fabric; refined and minimal design emphasizing clean lines'
       },
-      {
-        name: 'Evening Gown',
-        image: './../../assets/styles/women/Dresses/Evening-Gown.jpg',
-        defaultColor: 'midnight blue',
-        prompt:
-          '{color} evening gown with off-shoulder neckline and subtle straps, fitted bodice, and flared floor-length skirt; shimmering sequined fabric with realistic light reflection; elegant formal design suitable for evening wear'
-      },
+     {
+  name: 'Evening Gown',
+  image: './../../assets/styles/women/Dresses/Evening-Gown.jpg',
+  defaultColor: 'midnight blue',
+  prompt:
+    '{color} elegant evening gown with covered shoulders and modest neckline; fitted bodice and gently flared floor-length skirt; subtle satin or fine sequined texture with soft, realistic light reflection; refined formal design with opaque fabric and stable silhouette consistent from front, side, and back views'
+}
+,
       {
         name: 'A-Line Dress',
         image: './../../assets/styles/women/Dresses/A-Line.jpg',
-        defaultColor: 'dusty rose',
+        defaultColor: 'light Purple',
         prompt:
           '{color} A-line dress, floor-length chiffon fabric with gathered neckline and long bishop sleeves; soft, flowing drape with natural pleats; modest and feminine evening silhouette'
       },
@@ -936,12 +937,13 @@ export const WOMEN_DRESSES: WomenTitleCategory[] = [
 },
 
       {
-        name: 'Mini Dress',
-        image: './../../assets/styles/women/Dresses/Mini.jpg',
-        defaultColor: 'sky blue',
-        prompt:
-          '{color} mini dress, above-knee length with thin straps, fitted waist, and light flare; smooth cotton-blend fabric; youthful and modest summer style with clean finish'
-      },
+  name: 'Mini Dress',
+  image: './../../assets/styles/women/Dresses/Mini.jpg',
+  defaultColor: 'sky blue',
+  prompt:
+    '{color} short summer dress reaching mid-thigh, sleeveless with modest shoulder coverage and fitted waist; smooth cotton-blend fabric with clean seams; ensure full-body outfit with visible legs (no pants or trousers underneath); consistent opaque fabric and stable form from all angles'
+}
+,
       {
         name: 'Off-Shoulder Dress',
         image: './../../assets/styles/women/Dresses/Off-Shoulder.jpg',
@@ -949,13 +951,14 @@ export const WOMEN_DRESSES: WomenTitleCategory[] = [
         prompt:
           '{color} off-shoulder dress with puffed sleeves and gathered bodice, mid-calf flowy skirt; light cotton or chiffon fabric; elegant and romantic silhouette with balanced volume'
       },
-      {
-        name: 'Shirt Dress',
-        image: './../../assets/styles/women/Dresses/Shirt.jpg',
-        defaultColor: 'light blue',
-        prompt:
-          '{color} shirt dress styled like a button-up shirt, short sleeves with rolled cuffs, belted waist; knee-length crisp cotton fabric; minimal and casual daytime design'
-      },
+     {
+  name: 'Shirt Dress',
+  image: './../../assets/styles/women/Dresses/Shirt.jpg',
+  defaultColor: 'light blue',
+  prompt:
+    '{color} shirt-style dress with button-up front, short sleeves with rolled cuffs, and belted waist; knee-length opaque cotton fabric; single-piece outfit replacing any pants or trousers; casual daytime design with consistent structure from all sides'
+}
+,
       {
         name: 'Slip Dress',
         image: './../../assets/styles/women/Dresses/Slip.jpg',
@@ -983,76 +986,78 @@ export const WOMEN_JEANS = [
       {
         name: 'Skinny Jeans',
         image: './../../assets/styles/women/Jeans/Skinny.jpg',
-        defaultColor: 'light blue denim',
+        defaultColor: 'deep blue denim',
         prompt:
-          '{color} skinny jeans, high-rise, ankle-length, slim fit through hips and legs; stretch denim with smooth texture; minimal fading and clean stitching'
+          '{color} high-waist skinny denim jeans with close, even fit down to the ankles; full-length stretch denim with smooth clean surface and subtle natural fading; classic five-pocket construction, seams and shape consistent from front, side, and back views'
       },
       {
         name: 'High Waist Jeans',
         image: './../../assets/styles/women/Jeans/High-Waist.jpg',
-        defaultColor: 'mid blue denim',
+        defaultColor: 'light blue denim',
         prompt:
-          '{color} high-waist jeans with narrow legs, fitted shape, slightly faded texture; realistic denim weave with subtle creases and natural seams'
+          '{color} high-waist denim jeans with slim straight legs and ankle-length cut; soft even wash with light shading; classic five-pocket layout and stable, simple silhouette clearly visible from all angles'
       },
       {
-        name: 'Mom Jeans',
-        image: './../../assets/styles/women/Jeans/Mom.jpg',
-        defaultColor: 'light washed denim blue',
-        prompt:
-          '{color} mom jeans, high-waisted with relaxed fit around hips, straight tapered legs, rolled hems; classic vintage texture and soft fading'
-      },
+  name: 'Mom Jeans',
+  image: './../../assets/styles/women/Jeans/Mom.jpg',
+  defaultColor: 'light washed blue denim',
+  prompt:
+    '{color} mom jeans with high waist and full-length straight to gently tapered legs; light vintage wash with soft even fading; classic five-pocket design and structured silhouette consistent from front, side, and back views'
+},
       {
         name: 'Straight Fit Jeans',
         image: './../../assets/styles/women/Jeans/Straight-Fit.jpg',
         defaultColor: 'medium blue denim',
         prompt:
-          '{color} straight-fit jeans, mid-rise, full-length, regular cut from hip to ankle; even color tone with light fading along thighs'
+          '{color} straight-leg denim jeans with mid to high waist and full-length cut; uniform width from knee to hem and balanced medium wash; clean seams, classic pockets, and stable straight outline from all sides'
       },
       {
         name: 'Flared Jeans',
         image: './../../assets/styles/women/Jeans/Flared.jpg',
-        defaultColor: 'dark indigo blue',
+        defaultColor: 'dark indigo denim',
         prompt:
-          '{color} flared jeans, fitted through hips and thighs with flare from knee downward; long hem, smooth denim texture, minimal fading'
+          '{color} flared denim jeans with high waist, slim upper leg, and clear flare from below the knee to the hem; full length with smooth dark wash and minimal fading; consistent flare shape and proportions in front, side, and back views'
       },
       {
         name: 'Boyfriend Jeans',
         image: './../../assets/styles/women/Jeans/Boyfriend.jpg',
-        defaultColor: 'soft faded blue',
+        defaultColor: 'soft faded blue denim',
         prompt:
-          '{color} boyfriend jeans with relaxed loose fit, rolled cuffs, low to mid-rise waist; casual style with natural fading and soft worn look'
+          '{color} boyfriend denim jeans with relaxed straight fit and neatly rolled cuffs above the ankle; light washed finish with soft worn effect; volume, cuff height, and pocket placement stable across all viewing angles'
       },
       {
         name: 'Wide Leg Jeans',
         image: './../../assets/styles/women/Jeans/Wide-Leg.jpg',
-        defaultColor: 'washed medium blue',
+        defaultColor: 'medium blue denim',
         prompt:
-          '{color} wide-leg jeans, high waist, long full-length silhouette, structured denim with visible vertical weave; clean hem and even tone'
+          '{color} wide-leg denim jeans with high waist and long full-length wide silhouette; structured fabric with smooth vertical fall; even wash, clean hem, and clearly defined wide shape consistent from every direction'
       },
       {
-        name: 'Distressed Jeans',
-        image: './../../assets/styles/women/Jeans/Distressed.jpg',
-        defaultColor: 'light blue denim',
-        prompt:
-          '{color} distressed jeans with ripped knees and subtle frayed edges, slim fit, mid-rise; realistic fabric tears with natural worn fading'
-      },
-      {
-        name: 'Cropped Jeans',
-        image: './../../assets/styles/women/Jeans/Cropped.jpg',
-        defaultColor: 'medium light denim blue',
-        prompt:
-          '{color} cropped jeans, ankle-length, slim fit, simple design with clean hems; smooth denim surface and mild fading near seams'
-      },
+  name: 'Distressed Jeans',
+  image: './../../assets/styles/women/Jeans/Distressed.jpg',
+  defaultColor: 'light blue denim',
+  prompt:
+    '{color} slim straight full-length jeans with controlled distressed details and small frayed patches on the front; realistic denim texture with balanced fading; seams, pockets, and distress positions kept consistent in all views'
+},
+{
+  name: 'Cropped Jeans',
+  image: './../../assets/styles/women/Jeans/Cropped.jpg',
+  defaultColor: 'medium blue denim',
+  prompt:
+    '{color} cropped jeans with slim straight legs ending slightly above the ankle; clean simple hems and classic five-pocket style; clearly jeans, not shorts, with length and silhouette consistent from every viewing angle'
+},
       {
         name: 'Vintage Blue Jeans',
         image: './../../assets/styles/women/Jeans/Vintage-Blue.jpg',
-        defaultColor: 'vintage blue wash',
+        defaultColor: 'vintage blue wash denim',
         prompt:
-          '{color} vintage-style jeans, mid-rise, straight fit, classic blue denim with natural fading and worn creases; realistic texture and neutral tone'
+          '{color} classic straight-leg denim jeans with mid to high waist and full-length cut; vintage-style blue wash with gentle fading at seams; structured, timeless silhouette and pocket placement consistent in every view'
       }
     ]
   }
 ];
+
+
 
 
 
@@ -1123,13 +1128,7 @@ export const WOMEN_HEELS = [
         prompt:
           '{color} kitten heels with low slim heel and cross straps in pastel shades; soft matte finish with gentle contrast detailing'
       },
-      {
-        name: 'Embellished Heels',
-        image: './../../assets/styles/women/Heels/Embellished.jpg',
-        defaultColor: 'royal blue and silver crystal',
-        prompt:
-          '{color} embellished heels covered with ornate silver crystals and embroidery on royal blue base; pointed toe, ankle strap, and reflective sparkle details'
-      }
+      
     ]
   }
 ];
@@ -1169,13 +1168,14 @@ export const WOMEN_BLOUSES = [
     '{color} satin wrap blouse with a secure crossover front and modest high V-neck (no cleavage), long sleeves, and a fixed left-side waist tie bow; opaque satin with smooth even texture and gentle low-gloss sheen; stable overlap, bow position, and hem length consistent from front, right-side, and back views'
 }
       ,
-      {
-        name: 'Lace Detail Blouse',
-        image: './../../assets/styles/women/Blouses/Lace-Detail.jpg',
-        defaultColor: 'ivory lace and chiffon',
-        prompt:
-          '{color} blouse with lace-patterned front panel and chiffon sleeves; structured cuffs with lace trim; modest opaque texture with vintage-inspired design visible from every direction'
-      },
+     {
+  name: 'Lace Detail Blouse',
+  image: './../../assets/styles/women/Blouses/Lace-Detail.jpg',
+  defaultColor: 'ivory lace and chiffon',
+  prompt:
+    '{color} long-sleeve blouse with a lined lace-style decorative front panel and opaque chiffon-style sleeves; structured cuffs with subtle lace trim; fully opaque, modest, vintage-inspired design with consistent shape and coverage from all angles'
+}
+,
       {
         name: 'Puff Sleeve Blouse',
         image: './../../assets/styles/women/Blouses/Puff-Sleeve.jpg',
@@ -1424,13 +1424,14 @@ export const WOMEN_SWEATERS = [
           '{color} short cropped sweater with crew neck and wide ribbed hem; soft knit texture with slightly loose silhouette and cozy feel'
       },
 
-      {
-        name: 'Button-Up Cardigan',
-        image: './../../assets/styles/women/Sweaters/Button-Up.jpg',
-        defaultColor: 'dusty rose wool blend',
-        prompt:
-          '{color} button-up cardigan with crew neck and front buttons; fine knit fabric with soft texture and ribbed cuffs and hem'
-      },
+     {
+  name: 'Button-Up Cardigan',
+  image: './../../assets/styles/women/Sweaters/Button-Up.jpg',
+  defaultColor: 'dusty rose wool blend',
+  prompt:
+    '{color} wool-blend cardigan with a fully closed front and evenly spaced buttons; crew neckline, long sleeves, and ribbed cuffs and hem; medium-gauge knit with smooth soft texture; modest opaque fabric and stable shape consistent from all viewing angles'
+}
+,
       {
         name: 'V-Neck Sweater',
         image: './../../assets/styles/women/Sweaters/V-Neck.jpg',
@@ -1635,82 +1636,75 @@ export const WOMEN_SKIRTS: WomenTitleCategory[] = [
   {
     title: 'Skirts',
     items: [
- {
-  name: 'Mini Skirt',
-  image: './../../assets/styles/women/Skirts/Mini.jpg',
-  defaultColor: 'light blue denim',
-  prompt:
-    '{color} denim mini skirt with short straight cut and subtle pocket stitching; smooth washed denim texture with casual youthful style; proportions and coverage realistic and consistent with standard skirt design'
-}
-,
       {
-  name: 'Midi Skirt',
-  image: './../../assets/styles/women/Skirts/Midi.jpg',
-  defaultColor: 'sage green satin',
-  prompt:
-    '{color} midi skirt with light flare and mid-calf length; smooth satin fabric with soft drape and gentle shine'
-},
+        name: 'Mini Skirt',
+        image: './../../assets/styles/women/Skirts/Mini.jpg',
+        defaultColor: 'light blue denim',
+        prompt:
+          '{color} denim mini skirt with short straight cut and front button design; solid opaque denim texture with clear seam lines; worn as single-piece skirt with no pants or trousers underneath; proportions and shape consistent in all views'
+      },
+      {
+        name: 'Midi Skirt',
+        image: './../../assets/styles/women/Skirts/Midi.jpg',
+        defaultColor: 'sage green satin',
+        prompt:
+          '{color} midi-length satin skirt reaching mid-calf, gentle A-line shape with smooth drape; soft satin surface with modest low sheen; single-piece skirt without pants, consistent fabric thickness and symmetry from all angles'
+      },
       {
         name: 'Maxi Skirt',
         image: './../../assets/styles/women/Skirts/Maxi.jpg',
         defaultColor: 'lavender chiffon',
         prompt:
-          '{color} long flowing maxi skirt with soft pleats and full shape; lightweight chiffon fabric with matte finish'
+          '{color} long full-length maxi skirt with soft volume and layered opaque chiffon fabric; matte surface with natural fall; no pants underneath, consistent flow and coverage from front, side, and back views'
       },
       {
-        name: 'Pleated Skirt',
-        image: './../../assets/styles/women/Skirts/Pleated.jpg',
-        defaultColor: 'pale yellow chiffon',
-        prompt:
-          '{color} pleated skirt with fine vertical folds and elastic waistband; lightweight chiffon fabric with soft matte look'
-      },
+  name: 'Pleated Skirt',
+  image: './../../assets/styles/women/Skirts/Pleated.jpg',
+  defaultColor: 'pale yellow chiffon',
+  prompt:
+    '{color} mid-length pleated skirt replacing any existing pants or jeans; fine vertical pleats with fitted waistband; opaque chiffon fabric with smooth matte finish; uniform folds and stable modest silhouette from all viewing angles'
+},
       {
   name: 'A-Line Skirt',
   image: './../../assets/styles/women/Skirts/A-Line.jpg',
   defaultColor: 'charcoal gray wool blend',
   prompt:
-    '{color} A-line skirt with fitted waist and slightly flared hem; wool blend fabric with matte texture and clean structure'
-}
-,
+    '{color} A-line skirt replacing any pants or trousers, fitted at the waist and gently flared to knee-length; medium-weight wool-blend fabric with matte smooth texture; opaque structure with consistent clean shape from every side'
+},
       {
         name: 'Pencil Skirt',
         image: './../../assets/styles/women/Skirts/Pencil.jpg',
         defaultColor: 'navy crepe',
         prompt:
-          '{color} pencil skirt with back vent and fitted silhouette; crepe fabric with smooth matte surface and clean lines'
+          '{color} knee-length pencil skirt with straight fitted cut and small back vent; opaque crepe fabric with clean matte surface; formal and modest design worn as single-piece skirt without trousers; structure stable from all sides'
       },
       {
         name: 'Wrap Skirt',
         image: './../../assets/styles/women/Skirts/Wrap.jpg',
         defaultColor: 'light orange cotton blend',
         prompt:
-          '{color} wrap skirt with side tie closure and soft folds; cotton blend fabric with matte finish and lightweight texture'
+          '{color} wrap skirt with left-side overlap and fixed tie; medium-weight cotton-blend fabric with matte smooth finish; secure closure with opaque modest texture, consistent design and coverage from all angles'
       },
-      {
-  name: 'Denim Skirt',
-  image: './../../assets/styles/women/Skirts/Denim.jpg',
-  defaultColor: 'medium blue denim',
-  prompt:
-    '{color} denim skirt with front button and pockets; cotton denim fabric with faded wash and visible stitching'
-}
-,
+
+
       {
         name: 'Leather Skirt',
         image: './../../assets/styles/women/Skirts/Leather.jpg',
         defaultColor: 'black faux leather',
         prompt:
-          '{color} flared leather skirt with panel stitching and smooth surface; faux leather material with subtle sheen and structure'
+          '{color} flared knee-length skirt made of smooth faux leather; soft sheen and firm structure; fully opaque material with stable panel seams; worn as single-piece skirt, form and hem consistent from all angles'
       },
       {
-        name: 'Tulle Skirt',
-        image: './../../assets/styles/women/Skirts/Tulle.jpg',
-        defaultColor: 'ivory tulle',
-        prompt:
-          '{color} layered tulle skirt with soft gathered tiers; lightweight mesh fabric with airy volume and delicate transparency'
-      },
-    ],
-  },
+  name: 'Tulle Skirt',
+  image: './../../assets/styles/women/Skirts/Tulle.jpg',
+  defaultColor: 'ivory tulle',
+  prompt:
+    '{color} midi-length tulle skirt that completely replaces any previous lower clothing; soft layered tulle over an opaque inner lining, creating gentle volume; no transparency, modest continuous coverage; silhouette and hem uniform and stable from every viewing angle'
+}
+    ]
+  }
 ];
+
 
 
 // 🩳 WOMEN_SHORTS
@@ -1719,78 +1713,79 @@ export const WOMEN_SHORTS = [
     title: 'Shorts',
     items: [
       {
-        name: 'Denim Shorts',
-        image: './../../assets/styles/women/Shorts/Denim.jpg',
-        defaultColor: 'medium blue denim',
-        prompt:
-          '{color} denim shorts, mid-thigh length, five-pocket layout with belt loops and zip fly, rolled hem, medium-weight cotton denim with mild fading and visible topstitch'
-      },
+  name: 'Denim Shorts',
+  image: './../../assets/styles/women/Shorts/Denim.jpg',
+  defaultColor: 'medium blue denim',
+  prompt:
+    '{color} denim shorts with short casual length clearly above the knee; classic five-pocket layout with belt loops and neat rolled hem; medium-weight cotton denim with gentle faded wash and visible stitching; clear shorts silhouette with consistent shape from front, side, and back views'
+},
       {
         name: 'High-Waisted Shorts',
         image: './../../assets/styles/women/Shorts/High-Waisted.jpg',
         defaultColor: 'light beige twill',
         prompt:
-          '{color} high-waisted shorts with clean front, mid-thigh length, belt loops and slant pockets, smooth cotton twill with matte finish and crisp seams'
+          '{color} high-waisted shorts with clean flat front and slant pockets; short upper-thigh length, smooth cotton twill with matte texture and crisp seams; balanced silhouette, consistent fit from every view'
       },
       {
         name: 'Tailored Shorts',
         image: './../../assets/styles/women/Shorts/Tailored.jpg',
         defaultColor: 'black crepe',
         prompt:
-          '{color} tailored shorts with front pleats and zip fly, mid-thigh length, structured silhouette, soft crepe fabric with matte surface and neat pressed lines'
+          '{color} tailored shorts with neat front pleats, short length ending above mid-thigh; structured design with zipper fly and pressed creases; opaque crepe fabric with smooth matte finish and precise edges'
       },
       {
         name: 'Bermuda Shorts',
         image: './../../assets/styles/women/Shorts/Bermuda.jpg',
         defaultColor: 'sky blue cotton',
         prompt:
-          '{color} bermuda shorts with straight leg and knee-length cut, belt loops and side pockets, smooth woven cotton with subtle texture and clean hem'
+          '{color} casual cotton shorts with straight legs and length just above mid-thigh; side pockets and belt loops; soft woven cotton fabric with subtle texture, clean seams, and uniform tone'
       },
       {
-        name: 'Paperbag Shorts',
-        image: './../../assets/styles/women/Shorts/Paperbag.jpg',
-        defaultColor: 'ivory linen blend',
-        prompt:
-          '{color} paperbag-waist shorts with fabric tie belt, relaxed leg and mid-thigh length, lightweight linen-blend with plain weave and soft drape'
-      },
+  name: 'Paperbag Shorts',
+  image: './../../assets/styles/women/Shorts/Paperbag.jpg',
+  defaultColor: 'ivory linen blend',
+  prompt:
+    '{color} paperbag-waist shorts with softly gathered waistband and fabric tie belt; relaxed short length clearly above the knee; lightweight opaque linen-blend with matte plain weave and smooth drape; clear shorts design with even proportions from all directions'
+},
       {
         name: 'Pleated Shorts',
         image: './../../assets/styles/women/Shorts/Pleated.jpg',
         defaultColor: 'mint woven fabric',
         prompt:
-          '{color} pleated-front shorts with mid-rise waistband, mid-thigh length, smooth woven fabric with matte finish and pressed creases'
+          '{color} pleated-front shorts with smooth waistband and short upper-thigh length; lightweight woven fabric with matte finish and pressed folds; consistent structure and length from front, side, and back'
       },
       {
         name: 'Linen Shorts',
         image: './../../assets/styles/women/Shorts/Linen.jpg',
         defaultColor: 'sand linen blend',
         prompt:
-          '{color} linen shorts with elastic drawstring waist and side pockets, mid-thigh length, breathable linen-blend with plain weave and gentle wrinkles'
+          '{color} linen shorts with elastic drawstring waist and side pockets; short relaxed fit ending at upper thigh; breathable opaque linen-blend with soft matte surface and mild wrinkles'
       },
       {
         name: 'Cargo Shorts',
         image: './../../assets/styles/women/Shorts/Cargo.jpg',
         defaultColor: 'olive green',
         prompt:
-          '{color} cargo shorts with flap side pockets and belt loops, mid-thigh length, durable cotton canvas with reinforced seams and clean hem'
+          '{color} utility-style cotton shorts with flap side pockets and belt loops; above mid-thigh length, durable canvas weave with reinforced seams and clean hem; sturdy balanced silhouette'
       },
       {
-        name: 'Leather Shorts',
-        image: './../../assets/styles/women/Shorts/Leather.jpg',
-        defaultColor: 'matte black faux leather',
-        prompt:
-          '{color} faux-leather shorts with clean front and side pockets, mid-thigh length, smooth matte finish with subtle panel seams and tidy hem'
-      },
+  name: 'Leather Shorts',
+  image: './../../assets/styles/women/Shorts/Leather.jpg',
+  defaultColor: 'matte black faux leather',
+  prompt:
+    '{color} faux-leather shorts with clean front, subtle panel seams and side pockets; short length clearly above the knee with neat straight hem; designed as structured shorts, not long trousers, with a stable smooth silhouette consistent from every view'
+},
       {
         name: 'Sport Shorts',
         image: './../../assets/styles/women/Shorts/Sport.jpg',
         defaultColor: 'heather gray with black waistband',
         prompt:
-          '{color} sport shorts in lightweight performance knit, elastic waistband with drawstring, mid-thigh length, breathable fabric with slight stretch and curved hem'
+          '{color} sporty shorts with elastic black waistband and short curved hem; lightweight stretch-knit fabric with breathable texture; upper-thigh length, consistent fit and coverage in all views'
       }
     ]
   }
 ];
+
 
 
 
@@ -1813,13 +1808,7 @@ export const WOMEN_JACKETS: WomenTitleCategory[] = [
         prompt:
           '{color} denim jacket with front buttons, chest flap pockets, and adjustable cuffs; cotton denim fabric with washed texture and visible stitching'
       },
-      {
-        name: 'Bomber Jacket',
-        image: './../../assets/styles/women/Jackets/Bomber.jpg',
-        defaultColor: 'olive green nylon',
-        prompt:
-          '{color} bomber jacket with front zipper, ribbed collar, cuffs, and hem; lightweight nylon with slight sheen and sleeve pocket detail'
-      },
+
       {
         name: 'Puffer Jacket',
         image: './../../assets/styles/women/Jackets/Puffer.jpg',
@@ -1841,15 +1830,14 @@ export const WOMEN_JACKETS: WomenTitleCategory[] = [
         prompt:
           '{color} long wool coat with notch lapel and two-button closure; wool-blend fabric with smooth matte texture and tailored fit'
       },
-      {
+{
   name: 'Raincoat',
   image: './../../assets/styles/women/Jackets/Raincoat.jpg',
   defaultColor: 'bright magenta waterproof fabric',
   prompt:
-    '{color} hooded raincoat with zip front and side pockets; water-resistant coated fabric with subtle shine and lightweight smooth texture'
+    '{color} hooded raincoat with long sleeves, full front zipper and covered placket, plus side pockets; straight relaxed cut falling slightly above the knee; opaque water-resistant fabric with soft uniform sheen; clean simple silhouette with consistent proportions from front, side, and back views'
 }
-,
-      {
+,      {
         name: 'Peacoat',
         image: './../../assets/styles/women/Jackets/Peacoat.jpg',
         defaultColor: 'navy wool blend',
@@ -1939,13 +1927,7 @@ export const WOMEN_BLAZERS: WomenTitleCategory[] = [
     '{color} cropped blazer with single button closure and short length; smooth woven suiting fabric with clean matte texture'
 }
 ,
-      {
-        name: 'Sleeveless Blazer',
-        image: './../../assets/styles/women/Blazers/Sleeveless.jpg',
-        defaultColor: 'slate gray woven fabric',
-        prompt:
-          '{color} sleeveless blazer with single button closure and flap pockets; tailored fit with smooth woven fabric and clean edges'
-      },
+
       {
         name: 'Tuxedo Blazer',
         image: './../../assets/styles/women/Blazers/Tuxedo.jpg',
@@ -2126,79 +2108,75 @@ export const WOMEN_BAGS: WomenTitleCategory[] = [
   {
     title: 'Bags & Purses',
     items: [
-      {
-        name: 'Tote Bag',
-        image: './../../assets/styles/women/Bags/Tote.jpg',
-        defaultColor: 'beige smooth leather',
-        prompt:
-          '{color} structured tote bag with two top handles and clean front; open main compartment with subtle magnetic closure; smooth leather surface with matte sheen'
-      },
+   {
+  name: 'Tote Bag',
+  image: './../../assets/styles/women/Bags/Tote.jpg',
+  defaultColor: 'beige smooth leather',
+  prompt:
+    '{color} structured tote bag appearing naturally beside the body; medium rectangular form with two handles and subtle top opening; smooth matte leather with fine stitching; accessory is visible and proportionate while all clothing stays unchanged'
+}
+,
       {
         name: 'Shoulder Bag',
         image: './../../assets/styles/women/Bags/Shoulder.jpg',
         defaultColor: 'ivory leather with tan strap',
         prompt:
-          '{color} compact shoulder bag with short single strap and flap front; minimal metal turn-lock; fine-grain leather with neat edge finish'
+          '{color} compact shoulder bag with single short strap resting comfortably under the arm; smooth fine-grain leather with small flap closure and minimal hardware; bag proportions stable and natural relative to the outfit'
       },
       {
         name: 'Crossbody Bag',
         image: './../../assets/styles/women/Bags/Crossbody.jpg',
         defaultColor: 'chestnut pebbled leather',
         prompt:
-          '{color} small rectangular crossbody with long adjustable strap and flap closure; pebbled leather texture, understated hardware, stitched edges'
+          '{color} small crossbody bag worn across the torso with adjustable strap; rectangular soft body, pebbled leather texture, and subtle metallic details; natural position and scale consistent from all sides without altering clothing'
       },
       {
-  name: 'Clutch',
-  image: './../../assets/styles/women/Bags/Clutch.jpg',
-  defaultColor: 'cobalt blue satin',
-  prompt:
-    'simple rectangular clutch made of {color} smooth fabric with metal frame and snap top closure'
-},
+        name: 'Clutch',
+        image: './../../assets/styles/women/Bags/Clutch.jpg',
+        defaultColor: 'cobalt blue satin',
+        prompt:
+          '{color} rectangular clutch bag gently held in one hand; smooth satin surface with simple metallic frame; compact accessory adding contrast to the outfit while clothing remains unchanged'
+      },
       {
         name: 'Satchel Bag',
         image: './../../assets/styles/women/Bags/Satchel.jpg',
         defaultColor: 'tan smooth leather',
         prompt:
-          '{color} medium satchel with top handle, detachable long strap, and front buckle straps; structured body, smooth leather, tidy topstitch'
+          '{color} medium satchel bag with structured body and top handle; optional long strap resting naturally on shoulder; smooth leather texture with precise stitching and stable form in all angles'
       },
-      {
-        name: 'Backpack',
-        image: './../../assets/styles/women/Bags/Backpack.jpg',
-        defaultColor: 'caramel leather',
-        prompt:
-          '{color} mini backpack with top handle, dual shoulder straps, and front zip pocket; rounded top, smooth leather, minimal hardware'
-      },
+      
       {
         name: 'Bucket Bag',
         image: './../../assets/styles/women/Bags/Bucket.jpg',
         defaultColor: 'chocolate grained leather',
         prompt:
-          '{color} bucket bag with drawstring closure and metal eyelets; rounded base, semi-structured sides, grain texture, clean stitching'
+          '{color} bucket bag with drawstring closure and rounded base, carried on the shoulder or by hand; grained leather with soft structure; stable size and shape across all perspectives'
       },
       {
         name: 'Mini Bag',
         image: './../../assets/styles/women/Bags/Mini.jpg',
         defaultColor: 'mirror silver metallic',
         prompt:
-          '{color} micro mini bag with slim chain strap and flap top; rigid boxy shape, high-gloss metallic surface, precise edges'
+          '{color} small metallic mini bag with slim chain strap worn diagonally or by hand; rigid compact body with subtle reflective surface; proportional accessory that complements the outfit without altering garments'
       },
       {
-  name: 'Evening Bag',
-  image: './../../assets/styles/women/Bags/Evening.jpg',
-  defaultColor: 'gold sequin finish',
-  prompt:
-    'small structured evening bag in {color} tone with fine chain strap and clean rectangular shape'
-},
+        name: 'Evening Bag',
+        image: './../../assets/styles/women/Bags/Evening.jpg',
+        defaultColor: 'gold sequin finish',
+        prompt:
+          '{color} elegant evening bag with fine chain strap and structured rectangular shape; decorative surface with subtle shimmer; worn gracefully by hand or over the shoulder while the outfit remains unchanged'
+      },
       {
         name: 'Quilted Bag',
         image: './../../assets/styles/women/Bags/Quilted.jpg',
         defaultColor: 'black leather',
         prompt:
-          '{color} quilted flap bag with diamond stitching and chain strap; medium size, soft leather surface, subtle rectangular clasp'
+          '{color} quilted flap bag with diamond stitching and chain strap, medium size; soft leather texture with subtle metallic clasp; worn naturally on the shoulder with consistent position and scale in every view'
       }
     ]
   }
 ];
+
 
 
 
@@ -2212,74 +2190,75 @@ export const WOMEN_JEWELRY: WomenTitleCategory[] = [
         image: './../../assets/styles/women/Jewelry/Necklace.jpg',
         defaultColor: 'rose gold with pearl pendant',
         prompt:
-          '{color} necklace with fine chain and small drop pendant; smooth metal finish and simple elegant design'
+          '{color} fine necklace accessory visible near the neck area with small drop pendant; subtle metallic sheen and simple balanced form; added jewelry element while all clothing and facial features stay unchanged'
       },
       {
         name: 'Bracelet',
         image: './../../assets/styles/women/Jewelry/Bracelet.jpg',
         defaultColor: 'rose gold chain',
         prompt:
-          'delicate {color} bracelet with fine links and small charm detail; polished surface and lightweight chain style'
+          '{color} delicate bracelet accessory appearing near the wrist area with small charm accent; light reflective metal texture and thin chain; accessory added naturally without altering clothing or skin'
       },
       {
-  name: 'Earrings',
-  image: './../../assets/styles/women/Jewelry/Earrings.jpg',
-  defaultColor: 'rose gold with pearl drop',
-  prompt:
-    'pair of {color} earrings with small upper stud and teardrop pendant; smooth metal finish and simple balanced design'
-},
+        name: 'Earrings',
+        image: './../../assets/styles/women/Jewelry/Earrings.jpg',
+        defaultColor: 'rose gold with pearl drop',
+        prompt:
+          '{color} small earring accessories visible near the ears with simple drop shape; polished metallic texture and minimal elegant design; jewelry addition only, keeping hair and outfit intact'
+      },
       {
         name: 'Rings',
         image: './../../assets/styles/women/Jewelry/Rings.jpg',
         defaultColor: 'mixed metal tones with clear stones',
         prompt:
-          'set of {color} rings in slim designs; combination of smooth bands and thin stone-set bands with simple finish'
+          'set of {color} ring accessories visible on the hands with slim metallic bands and subtle stone accents; reflective texture and consistent size; all other body parts and clothing unchanged'
       },
       {
         name: 'Anklet',
         image: './../../assets/styles/women/Jewelry/Anklet.jpg',
         defaultColor: 'rose gold with small heart charm',
         prompt:
-          'thin {color} anklet with fine chain and small charm at center; light polished surface and adjustable clasp'
+          '{color} anklet accessory visible around the ankle area with fine chain and tiny charm; polished surface and minimal shape; accessory added without modifying skin tone or clothing'
       },
       {
-  name: 'Brooch',
-  image: './../../assets/styles/women/Jewelry/Brooch.jpg',
-  defaultColor: 'rose gold with green stones',
-  prompt:
-    '{color} brooch with curved form and small stone accents; polished metal surface with precise subtle detailing'
-},
+        name: 'Brooch',
+        image: './../../assets/styles/women/Jewelry/Brooch.jpg',
+        defaultColor: 'rose gold with green stones',
+        prompt:
+          '{color} decorative brooch accessory appearing on the upper outfit area; metallic surface with small green stones and curved form; fixed accessory while outfit fabric and folds remain unchanged'
+      },
       {
         name: 'Choker',
         image: './../../assets/styles/women/Jewelry/Choker.jpg',
         defaultColor: 'rose gold with single stone center',
         prompt:
-          'simple {color} choker with slim band and round central gem; minimal design with smooth reflective surface'
+          '{color} slim choker accessory appearing near the neck area with small central gem; polished metallic finish; accessory addition while preserving all clothing and textures'
       },
       {
         name: 'Pendant',
         image: './../../assets/styles/women/Jewelry/Pendant.jpg',
         defaultColor: 'rose gold with pearl charm',
         prompt:
-          '{color} pendant necklace with delicate chain and small teardrop accent; minimal clean look with polished metal'
+          '{color} pendant necklace accessory visible close to the upper body; delicate chain and small charm accent; light reflection consistent, clothing and posture remain unchanged'
       },
       {
         name: 'Cuff Bracelet',
         image: './../../assets/styles/women/Jewelry/Cuff.jpg',
         defaultColor: 'rose gold polished metal',
         prompt:
-          'wide {color} cuff bracelet with smooth curved surface and subtle line detail; rigid open-ended design'
+          '{color} cuff bracelet accessory seen near the wrist area with smooth curved metallic surface; simple reflective finish; added jewelry item only, clothing and hands unchanged'
       },
       {
         name: 'Hoop Earrings',
         image: './../../assets/styles/women/Jewelry/Hoop.jpg',
         defaultColor: 'yellow gold metal',
         prompt:
-          'pair of classic {color} hoop earrings with smooth round shape and polished surface; simple latch closure'
+          'pair of {color} hoop earring accessories visible beside the face with circular polished form; balanced metallic tone and consistent scale; hair and clothing remain exactly the same'
       }
     ]
   }
 ];
+
 
 
 
@@ -2373,75 +2352,76 @@ export const WOMEN_HATS: WomenTitleCategory[] = [
         image: './../../assets/styles/women/Hats/Wide-Brim.jpg',
         defaultColor: 'natural straw beige',
         prompt:
-          '{color} wide brim hat with round crown and flat wide edges; woven straw texture and slim band detail'
+          '{color} wide-brim hat accessory appearing above the head with soft woven straw texture and thin band detail; visible as headwear addition while keeping all hair, face, and clothing unchanged'
       },
       {
         name: 'Bucket Hat',
         image: './../../assets/styles/women/Hats/Bucket.jpg',
         defaultColor: 'light beige cotton fabric',
         prompt:
-          '{color} bucket hat with soft downward brim; smooth cotton texture and minimal stitching'
+          '{color} bucket-style hat accessory visible above the head with downward brim and soft cotton texture; subtle stitching detail; headwear added without modifying hairstyle or outfit'
       },
       {
         name: 'Fedora',
         image: './../../assets/styles/women/Hats/Fedora.jpg',
         defaultColor: 'deep green felt with brown band',
         prompt:
-          '{color} fedora hat with pinched crown and medium brim; felt texture and neat ribbon detail'
+          '{color} fedora hat accessory with medium brim and narrow ribbon band; felt texture with soft shape; appears naturally on head area while face and clothes remain unchanged'
       },
       {
         name: 'Beret',
         image: './../../assets/styles/women/Hats/Beret.jpg',
         defaultColor: 'red wool fabric',
         prompt:
-          '{color} beret hat with soft round shape and flat top; even wool texture and classic design'
+          '{color} beret hat accessory resting softly above the head; round flat shape made of even wool texture; added element without altering hair or clothing'
       },
-      {
-        name: 'Baseball Cap',
-        image: './../../assets/styles/women/Hats/Baseball.jpg',
-        defaultColor: 'navy cotton fabric',
-        prompt:
-          '{color} baseball cap with curved brim and six-panel design; soft cotton surface and stitched seams'
-      },
+{
+  name: 'Baseball Cap',
+  image: './../../assets/styles/women/Hats/Baseball.jpg',
+  defaultColor: 'navy cotton fabric',
+  prompt:
+    '{color} baseball cap gently resting over the hair with curved brim and six-panel cotton structure; realistic fit following natural head shape; soft shadows and proper contact with hair; all clothing and facial features stay completely unchanged'
+}
+,
       {
         name: 'Beanie',
         image: './../../assets/styles/women/Hats/Beanie.jpg',
         defaultColor: 'light gray knitted yarn',
         prompt:
-          '{color} knitted beanie with folded edge and soft rounded top; thick yarn texture and smooth knit pattern'
+          '{color} knitted beanie head accessory with soft rounded top and folded edge; thick yarn pattern visible; added naturally on head while keeping hair and clothes intact'
       },
       {
-  name: 'Panama Hat',
-  image: './../../assets/styles/women/Hats/Panama.jpg',
-  defaultColor: 'natural beige',
-  prompt:
-    '{color} panama hat, flat crown and straight medium brim; fine woven texture; narrow black ribbon band; isolated on neutral background; studio product photo; no person, no logo, no text'
-}
-,
-      {
-        name: 'Visor',
-        image: './../../assets/styles/women/Hats/Visor.jpg',
-        defaultColor: 'light gray synthetic fabric',
+        name: 'Panama Hat',
+        image: './../../assets/styles/women/Hats/Panama.jpg',
+        defaultColor: 'natural beige',
         prompt:
-          '{color} sports visor with open top and curved front brim; smooth texture and adjustable back strap'
+          '{color} panama hat accessory with flat crown, medium straight brim, and thin ribbon band; woven straw texture; visible on head area while hairstyle and outfit stay unchanged'
       },
+      {
+  name: 'Visor',
+  image: './../../assets/styles/women/Hats/Visor.jpg',
+  defaultColor: 'light gray synthetic fabric',
+  prompt:
+    '{color} sports visor naturally fitted around the upper head with open top and curved front brim; adjustable back strap detail; realistic soft fit over hairline while keeping face and hairstyle unchanged'
+},
       {
         name: 'Cloche Hat',
         image: './../../assets/styles/women/Hats/Cloche.jpg',
         defaultColor: 'burgundy felt fabric',
         prompt:
-          '{color} cloche hat with rounded crown and short brim; smooth felt surface and small ribbon trim'
+          '{color} cloche-style head accessory with rounded crown and short brim; smooth felt texture and slim ribbon detail; accessory added without changing hair or outfit'
       },
       {
         name: 'Straw Hat',
         image: './../../assets/styles/women/Hats/Straw.jpg',
         defaultColor: 'natural straw beige with black ribbon',
         prompt:
-          '{color} straw hat with wide round brim and domed crown; woven straw pattern and thin decorative ribbon'
+          '{color} straw hat accessory with wide round brim and soft woven pattern; thin decorative ribbon visible; appears on head naturally while keeping all facial and clothing features the same'
       }
     ]
   }
 ];
+
 
 
 
@@ -2454,12 +2434,12 @@ export const WOMEN_SNEAKERS: WomenTitleCategory[] = [
     title: 'Sneakers',
     items: [
       {
-        name: 'Classic Sneakers',
-        image: './../../assets/styles/women/Sneakers/Classic.jpg',
-        defaultColor: 'off-white canvas',
-        prompt:
-          '{color} classic low-top sneakers with lace-up design and white rubber toe cap; flat sole; product on neutral background; no person'
-      },
+  name: 'Classic Sneakers',
+  image: './../../assets/styles/women/Sneakers/Classic.jpg',
+  defaultColor: 'off-white canvas',
+  prompt:
+    '{color} classic low-top canvas sneakers with lace-up front, white rubber toe cap and flat sole; simple casual design that fits naturally on the feet; clean proportions and consistent shape from front, side, and three-quarter views'
+},
       {
         name: 'Chunky Sneakers',
         image: './../../assets/styles/women/Sneakers/Chunky.jpg',
@@ -2489,12 +2469,12 @@ export const WOMEN_SNEAKERS: WomenTitleCategory[] = [
           '{color} high-top sneakers with lace-up front and round rubber toe cap; flat sole; neutral studio background; no person'
       },
       {
-        name: 'Low-Top Sneakers',
-        image: './../../assets/styles/women/Sneakers/Low-Top.jpg',
-        defaultColor: 'light green leather',
-        prompt:
-          '{color} low-top sneakers with smooth finish and thin sole; clean minimal look; top-down product photo on plain surface'
-      },
+  name: 'Low-Top Sneakers',
+  image: './../../assets/styles/women/Sneakers/Low-Top.jpg',
+  defaultColor: 'light green leather',
+  prompt:
+    '{color} smooth low-top sneakers with clean panels, slim sole and minimal detailing; modern lightweight look that aligns naturally with the foot; stable contours and sole thickness consistent in all viewing angles'
+},
       {
         name: 'Running Sneakers',
         image: './../../assets/styles/women/Sneakers/Running.jpg',
@@ -2517,12 +2497,12 @@ export const WOMEN_SNEAKERS: WomenTitleCategory[] = [
           '{color} leather sneakers with clean lines and subtle stitching; minimal sole design; soft shadow; plain background'
       },
       {
-        name: 'Designer Sneakers',
-        image: './../../assets/styles/women/Sneakers/Designer.jpg',
-        defaultColor: 'white with beige accents',
-        prompt:
-          '{color} designer sneakers with mixed materials and decorative side logo; clean studio shot; product isolated; no person or outfit'
-      }
+  name: 'Designer Sneakers',
+  image: './../../assets/styles/women/Sneakers/Designer.jpg',
+  defaultColor: 'white with beige accents',
+  prompt:
+    '{color} modern designer-style sneakers with mixed material panels and subtle side motif; structured low-top shape with balanced sole height; clean, refined appearance with consistent details from every view, suitable to wear with various outfits'
+}
     ]
   }
 ];
@@ -2535,12 +2515,12 @@ export const WOMEN_BOOTS: WomenTitleCategory[] = [
     title: 'Boots',
     items: [
       {
-        name: 'Ankle Boots',
-        image: './../../assets/styles/women/Boots/Ankle.jpg',
-        defaultColor: 'tan leather',
-        prompt:
-          '{color} ankle boots with smooth leather surface and low block heel; side zipper; product on plain background; no person or clothing'
-      },
+  name: 'Ankle Boots',
+  image: './../../assets/styles/women/Boots/Ankle.jpg',
+  defaultColor: 'tan leather',
+  prompt:
+    '{color} ankle boots with smooth leather texture, short shaft reaching just above the ankle, and low block heel; subtle side zipper detail; sturdy structured shape that fits naturally over the feet with consistent proportions from all views'
+},
       {
         name: 'Chelsea Boots',
         image: './../../assets/styles/women/Boots/Chelsea.jpg',
@@ -2560,7 +2540,7 @@ export const WOMEN_BOOTS: WomenTitleCategory[] = [
   image: './../../assets/styles/women/Boots/Flat.jpg',
   defaultColor: 'medium brown',
   prompt:
-    '{color} flat mid-calf boots with low heel and minimal stitching; smooth leather texture; plain background; no person or outfit'
+    '{color} flat mid-calf boots made of smooth leather, low heel and minimal stitching; stable balanced design with soft matte finish; boots positioned naturally on the feet with consistent shape from front, side, and back'
 },
       {
         name: 'Heeled Boots',
@@ -2584,18 +2564,18 @@ export const WOMEN_BOOTS: WomenTitleCategory[] = [
           '{color} over-the-knee boots with block heel and long fitted shaft; soft texture; studio photo with neutral background; no human figure'
       },
       {
-        name: 'Rain Boots',
-        image: './../../assets/styles/women/Boots/Rain.jpg',
-        defaultColor: 'black glossy rubber',
-        prompt:
-          '{color} rain boots with waterproof shiny surface and short shaft; simple smooth design; isolated on plain white background; no model'
-      },
-      {
+  name: 'Rain Boots',
+  image: './../../assets/styles/women/Boots/Rain.jpg',
+  defaultColor: 'black glossy rubber',
+  prompt:
+    '{color} waterproof rubber rain boots with short shaft and rounded toe; glossy surface with subtle highlights; sturdy weather-resistant look that sits naturally over the feet, maintaining consistent shape and reflections in all views'
+},
+{
   name: 'Suede Boots',
   image: './../../assets/styles/women/Boots/Suede.jpg',
   defaultColor: 'light tan',
   prompt:
-    '{color} ankle boots made of suede material with low heel and elastic sides; soft matte surface; plain studio background; no person or clothing'
+    '{color} suede ankle boots with soft matte finish, short shaft and low heel; elastic side panels for easy fit; stable opaque structure that aligns naturally with the feet and remains consistent from every angle'
 },
 {
   name: 'Western Boots',
@@ -2621,72 +2601,66 @@ export const WOMEN_SANDALS: WomenTitleCategory[] = [
         image: './../../assets/styles/women/Sandals/Flat.jpg',
         defaultColor: 'tan leather',
         prompt:
-          '{color} flat sandals with thin straps and small buckle; smooth leather surface; plain background; product only; no person or accessories'
+          '{color} flat sandals with slim straps and small buckle, low flexible sole and clean edges; simple everyday design that sits naturally on the feet; shape, strap placement and sole thickness consistent from front, side and three-quarter views'
       },
       {
         name: 'Heeled Sandals',
         image: './../../assets/styles/women/Sandals/Heeled.jpg',
         defaultColor: 'black patent leather',
         prompt:
-          '{color} heeled sandals with thin ankle strap and open toe; glossy surface; plain studio background; product only; no person'
+          '{color} heeled sandals with slim ankle strap, stable block or slim heel and open front; smooth glossy finish; elegant, balanced proportions that align naturally with the feet and remain consistent in all views'
       },
       {
         name: 'Strappy Sandals',
         image: './../../assets/styles/women/Sandals/Strappy.jpg',
         defaultColor: 'light brown leather',
         prompt:
-          '{color} strappy flat sandals with multiple thin straps and small buckle; matte leather texture; plain light background; no person or clothing'
+          '{color} flat strappy sandals with multiple slim straps across the foot and secure buckle; matte leather texture with clean stitching; comfortable fitted look with strap pattern and sole line stable from every angle'
       },
       {
         name: 'Platform Sandals',
         image: './../../assets/styles/women/Sandals/Platform.jpg',
         defaultColor: 'off-white leather with cork sole',
         prompt:
-          '{color} platform sandals with wide straps and ankle buckle; smooth upper and cork platform; plain white background; no model or shadows'
+          '{color} platform sandals with wide upper straps, ankle buckle and cork-style platform sole; solid, even platform height and secure fit; structured silhouette and strap layout consistent from front, side and back views'
       },
       {
         name: 'Gladiator Sandals',
         image: './../../assets/styles/women/Sandals/Gladiator.jpg',
         defaultColor: 'brown leather',
         prompt:
-          '{color} gladiator sandals with long laces and multiple straps; smooth matte texture; plain studio background; product only; no extra items'
+          '{color} gladiator sandals with multiple horizontal straps and secure fastening around the ankle or lower leg; matte leather finish with neat edges; clear structured strap pattern that follows the foot naturally and remains consistent in all views'
       },
       {
-  name: 'Slide Sandals',
-  image: './../../assets/styles/women/Sandals/Slide.jpg',
-  defaultColor: 'light pink',
-  prompt:
-    '{color} slide sandals with one wide strap and flat sole; smooth rubber surface; neutral studio background; product only; no human elements'
-}
-,
+        name: 'Slide Sandals',
+        image: './../../assets/styles/women/Sandals/Slide.jpg',
+        defaultColor: 'light pink',
+        prompt:
+          '{color} slide sandals with one wide strap and flat sole; soft smooth surface with clean contour; easy slip-on style that aligns evenly across both feet with consistent strap width and sole thickness from every angle'
+      },
       {
         name: 'Wedge Sandals',
         image: './../../assets/styles/women/Sandals/Wedge.jpg',
         defaultColor: 'cream leather with cork wedge',
         prompt:
-          '{color} wedge sandals with cross straps and ankle buckle; smooth surface and cork wedge; plain background; no person or shadows'
+          '{color} wedge sandals with cross straps, ankle buckle and cork-style wedge heel; stable continuous wedge from heel to mid-foot; straps, wedge height and overall shape kept uniform in front, side and back views'
       },
       {
         name: 'Thong Sandals',
         image: './../../assets/styles/women/Sandals/Thong.jpg',
         defaultColor: 'tan leather',
         prompt:
-          '{color} thong sandals with thin straps and flat sole; simple clean design; plain light background; no person or clothing'
+          '{color} toe-post flat sandals with slender straps and simple flat sole; minimal clean design with matte leather look; strap placement and sole outline consistent and balanced on both feet in all viewing angles'
       },
-      {
-        name: 'Espadrille Sandals',
-        image: './../../assets/styles/women/Sandals/Espadrille.jpg',
-        defaultColor: 'beige fabric with jute sole',
-        prompt:
-          '{color} espadrille sandals with ankle strap and braided jute platform; simple design; plain background; product only; no person'
-      },
+
       {
         name: 'Dress Sandals',
         image: './../../assets/styles/women/Sandals/Dress.jpg',
         defaultColor: 'nude leather',
         prompt:
-          '{color} dress sandals with crossed straps and small buckle; smooth surface; plain light background; product only; no accessories or person'
+          '{color} dress sandals with slim crossed straps, small buckle and low to mid heel; smooth refined finish; elegant, balanced silhouette that fits neatly on the feet with strap positions and heel height consistent in all views'
       }
     ]
   }
 ];
+

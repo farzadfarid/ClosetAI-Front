@@ -54,7 +54,7 @@ type WomenCategoryKey = typeof WOMEN_CATEGORIES[number]['key'];
   imports: [
     IonNote, IonCardContent, IonCardTitle,
     IonCardHeader, IonCard, CommonModule, FormsModule, IonHeader, IonContent,
-    IonToolbar, IonTitle, IonButtons, IonButton, IonIcon, RouterLink, LoadingComponent, IonToggle
+    IonToolbar, IonTitle, IonButtons, IonButton, IonIcon, RouterLink, LoadingComponent,
   ],
 })
 export class OutfitWomenPage {
@@ -75,7 +75,7 @@ export class OutfitWomenPage {
   pendingColors: Record<string, string | null> = {};
   selectedBackgroundPrompt: string | null = null;
 
-  isCreativeMode = false;
+  // isCreativeMode = false;
   outputMode: 'single' | 'four-view' = 'single';
 
   // 💄 دسته‌ها و آیتم‌های زنانه
@@ -248,9 +248,10 @@ export class OutfitWomenPage {
     if (this.activeCategory === key) return;
     this.activeCategory = key;
     this.selectedStyle = null;
-    Object.keys(this.selectedItemPrompts).forEach(k => {
-      if (k !== key) this.selectedItemPrompts[k as WomenCategoryKey] = null;
-    });
+    // Object.keys(this.selectedItemPrompts).forEach(k => {
+    //   if (k !== key) this.selectedItemPrompts[k as WomenCategoryKey] = null;
+    // });
+     this.cdRef.markForCheck();
   }
 
   getStylesForActiveCategory(): WomenCategory[] {
@@ -326,8 +327,6 @@ export class OutfitWomenPage {
         colorPalettes: this.colorPalettes,
         selectedBackground: this.selectedStyles['background']?.name,
         selectedBackgroundPrompt: this.selectedBackgroundPrompt || undefined,
-        isCreativeMode: this.isCreativeMode,
-        outputMode: this.outputMode,
         itemPrompts: promptsForApi,
       });
 
