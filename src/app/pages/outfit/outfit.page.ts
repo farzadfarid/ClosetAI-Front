@@ -1,12 +1,12 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
-  IonHeader, IonContent, IonToolbar, IonTitle, IonButtons, IonButton,IonToggle, IonIcon, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonNote, IonSegment, IonSegmentButton, IonLabel } from '@ionic/angular/standalone';
+  IonHeader, IonContent, IonToolbar, IonTitle, IonButtons, IonButton,IonToggle, IonIcon, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonNote } from '@ionic/angular/standalone';
 import { RouterLink } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { UploadService, UploadResponse } from 'src/app/services/upload';
-import { buildOutfitPrompt, OutfitParams } from 'src/app/models/outfit-params';
+import { buildCreativePromptForMen, buildOutfitPrompt, OutfitParams } from 'src/app/models/outfit-params';
 import { ToastService } from 'src/app/services/toast';
 
 import { addIcons } from 'ionicons';
@@ -39,7 +39,7 @@ type MenCategoryKey = typeof MEN_CATEGORIES[number]['key'];
   templateUrl: './outfit.page.html',
   styleUrls: ['./outfit.page.scss'],
   standalone: true,
-  imports: [IonLabel, IonSegmentButton, IonSegment,  IonNote, IonCardContent, IonCardTitle, IonCardHeader, IonCard, 
+  imports: [IonNote, IonCardContent, IonCardTitle, IonCardHeader, IonCard, 
     CommonModule,
     FormsModule,
     IonHeader,
@@ -73,7 +73,7 @@ export class OutfitPage {
   pendingColors: Record<string, string | null> = {};
   selectedBackgroundPrompt: string | null = null;
   isCreativeMode = false;
-  outputMode= 'single';
+
 
   // پرامپت هر کتگوریِ انتخاب‌شده
 private selectedItemPrompts: Record<MenCategoryKey, string | null> = {
@@ -194,15 +194,6 @@ p = p.replace(
 }
 
 
-
-
-
-
-
-
-onOutputModeChange(ev: CustomEvent) {
-  this.outputMode = ev.detail.value as  'single'|'four-view' ;
-}
 
   // مپ دیتای هر تب
   private stylesByCategory: Record<MenCategoryKey, TitleCategory[]> = {
@@ -423,10 +414,9 @@ this.selectedItemPrompts[cat] = this.selectedStyles[cat]
 
 
 
-hasAnySelection(): boolean {
-  const anySelected = Object.values(this.selectedStyles).some(s => !!s);
-  return !!(this.selectedUserFile && anySelected);
-}
+  hasAnySelection(): boolean {
+    return !!this.selectedUserFile && Object.values(this.selectedStyles).some(s => !!s) || this.isCreativeMode;
+  }
 
 
 
@@ -439,16 +429,8 @@ hasAnySelection(): boolean {
   // ☁️ آپلود و پردازش
   // ------------------------------------------
 async uploadFile() {
-  if (!this.selectedUserFile) {
-    this.toast.showError('Please select your photo.');
-    return;
-  }
-
-  const hasSelection = Object.values(this.selectedStyles).some(s => !!s);
-  if (!hasSelection) {
-    this.toast.showError('Please select at least one outfit item.');
-    return;
-  }
+ if (!this.selectedUserFile) return this.toast.showError('Please select your photo.');
+    if (!this.hasAnySelection()) return this.toast.showError('Please select at least one outfit item.');
 
   try {
     this.isLoading = true;
@@ -479,23 +461,17 @@ const promptsForApi = userHasColor
   : itemPrompts;
 
 
-  
+    const prompt =this.isCreativeMode
+      ? buildCreativePromptForMen()
+      :buildOutfitPrompt({
+      outfitStyle: this.outfitParams.style,
+      outfit: { ...this.outfitParams, selectedItems: [] }, 
+      colorPalettes: this.colorPalettes,
+      selectedBackground: this.selectedStyles['background']?.name,
+      selectedBackgroundPrompt: this.selectedBackgroundPrompt || undefined,
+      itemPrompts: promptsForApi,   // ← فقط همین
 
-
-const prompt = buildOutfitPrompt({
-  outfitStyle: this.outfitParams.style,
-  outfit: { ...this.outfitParams, selectedItems: [] },
-  colorPalettes: this.colorPalettes,
-  selectedBackground: this.selectedStyles['background']?.name,
-  selectedBackgroundPrompt: this.selectedBackgroundPrompt || undefined,
-  isCreativeMode: this.isCreativeMode,
-  outputMode: this.outputMode as 'single'|'four-view',
-  itemPrompts: promptsForApi,   // ← فقط همین
-});
-
-
-
-
+    });
 
 
     console.log('🧾 Generated Prompt:', prompt);

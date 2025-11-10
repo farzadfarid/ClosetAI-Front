@@ -129,3 +129,17 @@ if (sel.itemPrompts?.length) {
       .slice(0, 35000);
   }
 }
+
+
+export function buildCreativePromptForWomen(): string {
+  return `
+    Generate a photorealistic full-body image of the same woman.
+    Keep her face completely unchanged and clearly recognizable — identical facial features, shape, proportions, and skin tone.
+    The AI may only harmonize outfit style, color palette, and background for natural elegance.
+    Do not alter facial structure, eyes, lips, or hairline; maintain the same age and ethnicity.
+    Subtle adjustments in lighting or posture are allowed if they improve realism.
+    Preserve the woman's natural beauty exactly as in the original photo.
+    Ensure body proportions and pose remain realistic and consistent with the source.
+    No text, watermarks, or logos.
+  `.trim();
+}

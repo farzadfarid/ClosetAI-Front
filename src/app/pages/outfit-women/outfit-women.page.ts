@@ -9,7 +9,7 @@ import {
 import { RouterLink } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { UploadService, UploadResponse } from 'src/app/services/upload';
-import { buildWomenOutfitPrompt, WomenOutfitParams } from 'src/app/models/outfit-params-women';
+import { buildCreativePromptForWomen, buildWomenOutfitPrompt, WomenOutfitParams } from 'src/app/models/outfit-params-women';
 import { ToastService } from 'src/app/services/toast';
 import { addIcons } from 'ionicons';
 import { cloudUploadOutline, downloadOutline, homeOutline } from 'ionicons/icons';
@@ -44,7 +44,7 @@ import {
 import { LoadingComponent } from 'src/app/Core/Components/loading/loading.component';
 import { lastValueFrom } from 'rxjs';
 
-type WomenCategoryKey = typeof WOMEN_CATEGORIES[number]['key'];
+type WomenCategoryKey = typeof WOMEN_CATEGORIES[number]['key']; 
 
 @Component({
   selector: 'app-outfit-women',
@@ -54,7 +54,7 @@ type WomenCategoryKey = typeof WOMEN_CATEGORIES[number]['key'];
   imports: [
     IonNote, IonCardContent, IonCardTitle,
     IonCardHeader, IonCard, CommonModule, FormsModule, IonHeader, IonContent,
-    IonToolbar, IonTitle, IonButtons, IonButton, IonIcon, RouterLink, LoadingComponent,
+    IonToolbar, IonTitle, IonButtons, IonButton, IonIcon, RouterLink, LoadingComponent,IonToggle
   ],
 })
 export class OutfitWomenPage {
@@ -75,7 +75,7 @@ export class OutfitWomenPage {
   pendingColors: Record<string, string | null> = {};
   selectedBackgroundPrompt: string | null = null;
 
-  // isCreativeMode = false;
+  isCreativeMode = false;
   outputMode: 'single' | 'four-view' = 'single';
 
   // 💄 دسته‌ها و آیتم‌های زنانه
@@ -284,7 +284,7 @@ export class OutfitWomenPage {
   }
 
   hasAnySelection(): boolean {
-    return !!this.selectedUserFile && Object.values(this.selectedStyles).some(s => !!s);
+    return !!this.selectedUserFile && Object.values(this.selectedStyles).some(s => !!s) || this.isCreativeMode;
   }
 
   get activeCategoryLabel(): string {
@@ -321,7 +321,11 @@ export class OutfitWomenPage {
         ? itemPrompts.map(p => p.includes('{color}') ? p.replace(/\{color\}/gi, mainColor) : p)
         : itemPrompts;
 
-      const prompt = buildWomenOutfitPrompt({
+
+
+      const prompt = this.isCreativeMode
+      ? buildCreativePromptForWomen()
+      :buildWomenOutfitPrompt({
         outfitStyle: this.outfitParams.style,
         outfit: { ...this.outfitParams, selectedItems: [] },
         colorPalettes: this.colorPalettes,

@@ -57,10 +57,10 @@
       </div>
 
 <div class="mode-toggle">
-  <span class="label-text">Allow AI to adjust outfit for harmony</span>
+  <span class="label-text">Let AI harmonize outfit and background</span>
   <ion-toggle [(ngModel)]="isCreativeMode"  name="creativeMode" mode="ios"></ion-toggle>
 </div>
-        <ion-card class="param-card">
+    <!--     <ion-card class="param-card">
           <ion-card-header><ion-card-title>Output Mode</ion-card-title></ion-card-header>
           <ion-card-content>
             <ion-segment [value]="outputMode" (ionChange)="onOutputModeChange($event)">
@@ -68,7 +68,7 @@
               <ion-segment-button value="four-view"><ion-label>Three Views</ion-label></ion-segment-button>
             </ion-segment>
           </ion-card-content>
-        </ion-card>
+        </ion-card> -->
 
 
 
@@ -123,7 +123,7 @@
     />
 
     <ion-button
-      *ngIf="colorPalettes[activeCategory]?.length"
+      *ngIf="colorPalettes[activeCategory]?.length" 
       size="small"
       color="danger"
       fill="outline"

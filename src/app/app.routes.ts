@@ -24,4 +24,12 @@ export const routes: Routes = [
     path: 'outfit-women',
     loadComponent: () => import('./pages/outfit-women/outfit-women.page').then( m => m.OutfitWomenPage)
   },
+  {
+    path: 'outfit-girl',
+    loadComponent: () => import('./pages/outfit-girl/outfit-girl.page').then( m => m.OutfitGirlPage)
+  },
+  {
+    path: 'outfit-boy',
+    loadComponent: () => import('./pages/outfit-boy/outfit-boy.page').then( m => m.OutfitBoyPage)
+  },
 ];

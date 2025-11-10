@@ -170,62 +170,68 @@ export const MEN_SHIRTS: TitleCategory[] = [
         name: 'Oxford Shirt',
         image: './../../assets/styles/men/ClassicShirts/Oxford-White.jpg',
         defaultColor: 'white',
-        prompt: '{color} cotton Oxford shirt with button-down collar and crisp texture, long sleeves, worn naturally under or without a blazer'
+        prompt:
+          '{color} cotton Oxford shirt with button-down collar and crisp woven texture; long sleeves neatly fitted on torso; replace only the shirt while keeping all other garments unchanged; natural realistic fabric folds and matte finish'
       },
       { 
         name: 'Slim Fit Shirt',
         image: './../../assets/styles/men/ClassicShirts/Slim-Fit-Blue.jpg',
         defaultColor: 'light blue',
-        prompt: '{color} slim-fit dress shirt with smooth cotton fabric, long sleeves, and tailored fit, styled neatly beneath jacket or on its own'
+        prompt:
+          '{color} slim-fit dress shirt made of smooth cotton fabric; long sleeves and structured collar; replace only the shirt; preserve jacket, tie, and all other outfit parts exactly as in the original image'
       },
       { 
         name: 'Checked Cotton Shirt',
         image: './../../assets/styles/men/ClassicShirts/Checked-Cotton.jpg',
         defaultColor: 'red and navy',
-        prompt: '{color} checked cotton shirt with button-down collar, casual pattern, worn naturally under blazer or jacket with pattern visible at chest and collar area'
+        prompt:
+          '{color} checked cotton shirt with fine square pattern and button-down collar; realistic fabric texture with visible pattern on chest and sleeves; substitute only the shirt, keep outerwear and pose unchanged'
       },
+
       { 
-        name: 'Linen Summer Shirt',
-        image: './../../assets/styles/men/ClassicShirts/Linen-Summer.jpg',
-        defaultColor: 'beige',
-        prompt: '{color} short-sleeve linen summer shirt with airy texture and relaxed fit, can appear alone or slightly visible under lightweight blazer'
-      },
-      { 
-        name: 'Mandarin Collar Shirt',
-        image: './../../assets/styles/men/ClassicShirts/Mandarin-Collar.jpg',
-        defaultColor: 'light grey',
-        prompt: '{color} mandarin collar shirt with minimal buttons and soft drape, styled cleanly beneath blazer or as standalone top'
-      },
+  name: 'Mandarin Collar Shirt',
+  image: './../../assets/styles/men/ClassicShirts/Mandarin-Collar.jpg',
+  defaultColor: 'light grey',
+  prompt:
+    '{color} mandarin-collar shirt made of smooth cotton-linen blend; subtle matte texture visible only at the collar and neckline area beneath the existing jacket; do not modify or remove the jacket, its sleeves, or any other clothing layer; keep all lighting and proportions identical'
+},
+
       { 
         name: 'Formal Shirt',
         image: './../../assets/styles/men/ClassicShirts/Black-Formal.jpg',
         defaultColor: 'black',
-        prompt: '{color} formal cotton shirt with crisp texture and long sleeves, neatly layered beneath suit jacket or blazer'
+        prompt:
+          '{color} formal cotton shirt with clean texture and subtle sheen; long sleeves and structured collar; adjust only the shirt layer; retain blazer, tie, and overall appearance exactly'
       },
       { 
         name: 'Denim Shirt',
         image: './../../assets/styles/men/ClassicShirts/Denim.jpg',
         defaultColor: 'blue denim',
-        prompt: '{color} denim shirt with front pockets and rolled sleeves, rugged yet balanced look, layered naturally under casual jacket or worn on its own'
+        prompt:
+          '{color} denim shirt made of medium-weight cotton denim with visible seams and front pockets; long sleeves with soft rolled cuffs; replace only the shirt while keeping jacket and all other clothes unchanged'
       },
       { 
         name: 'Striped Dress Shirt',
         image: './../../assets/styles/men/ClassicShirts/Striped-Dress.jpg',
         defaultColor: 'light blue striped',
-        prompt: '{color} striped dress shirt with long sleeves and slim fit, visible under blazer with subtle formal pattern on chest and collar'
+        prompt:
+          '{color} striped dress shirt with fine vertical lines, smooth cotton texture, and long sleeves; replace only the shirt; retain all other clothing and facial details exactly as in the input photo'
       },
       { 
-        name: 'Flannel Plaid Shirt',
-        image: './../../assets/styles/men/ClassicShirts/Flannel-Plaid.jpg',
-        defaultColor: 'red and black plaid',
-        prompt: '{color} flannel plaid shirt layered under jacket, soft cozy fabric visible at collar and sleeves, preserving outer layer'
-      },
-      { 
-        name: 'Casual Chambray Shirt',
-        image: './../../assets/styles/men/ClassicShirts/Casual-Chambray.jpg',
-        defaultColor: 'light blue chambray',
-        prompt: '{color} chambray shirt with relaxed fit and button-down design, styled beneath blazer with texture visible at neckline and cuffs'
-      },
+  name: 'Flannel Plaid Shirt',
+  image: './../../assets/styles/men/ClassicShirts/Flannel-Plaid.jpg',
+  defaultColor: 'red and black plaid',
+  prompt:
+    '{color} flannel plaid shirt with soft brushed texture, pattern visible only around the collar and small part of chest under the current jacket; preserve the entire jacket and its sleeves exactly as in the input; replace only the visible shirt portion, keeping face, hands, and background unchanged'
+},
+
+{ 
+  name: 'Casual Chambray Shirt',
+  image: './../../assets/styles/men/ClassicShirts/Casual-Chambray.jpg',
+  defaultColor: 'light blue chambray',
+  prompt:
+    '{color} chambray shirt with matte cotton weave texture, slightly visible at neckline and cuffs underneath the existing blazer; do not alter or remove the blazer or its sleeves; modify only the visible shirt fabric area while keeping all other outfit parts, body, and lighting unchanged'
+}
     ]
   }
 ];
@@ -241,62 +247,72 @@ export const MEN_TSHIRTS: TitleCategory[] = [
         name: 'Plain Tee',
         image: './../../assets/styles/men/T-sherts/Plain-White.jpg',
         defaultColor: 'white',
-        prompt: '{color} cotton T-shirt, smooth fabric, short sleeves, classic regular fit'
+        prompt:
+          '{color} plain cotton T-shirt with smooth matte texture and short sleeves; natural regular fit; replace only the T-shirt while keeping all other garments and body proportions unchanged'
       },
       { 
         name: 'Crew Neck',
         image: './../../assets/styles/men/T-sherts/Black-Crew-Neck.jpg',
         defaultColor: 'black',
-        prompt: '{color} crew-neck T-shirt, soft cotton, short sleeves, minimal design'
+        prompt:
+          '{color} crew-neck cotton T-shirt with soft surface and short sleeves; classic cut and natural fabric folds; change only the T-shirt layer, preserving jacket or accessories if present'
       },
       { 
-        name: 'Graphic Print Tee',
+        name: 'Artistic Print Tee',
         image: './../../assets/styles/men/T-sherts/Graphic-Print.jpg',
         defaultColor: 'black',
-        prompt: '{color} cotton T-shirt featuring an artistic motif with dynamic colors, smooth texture, urban streetwear style'
+        prompt:
+          '{color} cotton T-shirt featuring a subtle artistic pattern; smooth clean texture with no text or logos; modify only the visible T-shirt area without altering body, pants, or background'
       },
-
-      { 
-        name: 'Oversized Beige Tee',
-        image: './../../assets/styles/men/T-sherts/Oversized-Beige.jpg',
-        defaultColor: 'beige',
-        prompt: 'loose-fit {color} oversized T-shirt, wide sleeves, casual relaxed cut'
-      },
+  { 
+  name: 'Oversized Beige Tee',
+  image: './../../assets/styles/men/T-sherts/Oversized-Beige.jpg',
+  defaultColor: 'beige',
+  prompt:
+    '{color} cotton T-shirt with plain matte surface, visible naturally beneath the existing jacket; simple short sleeves and smooth neckline; modify only the T-shirt area without changing or removing the jacket, body shape, or lighting'
+}
+,
       { 
         name: 'Striped Navy Tee',
         image: './../../assets/styles/men/T-sherts/Striped-Navy.jpg',
         defaultColor: 'navy blue',
-        prompt: '{color} T-shirt with white horizontal stripes, soft cotton, nautical style'
+        prompt:
+          '{color} cotton T-shirt with thin white horizontal stripes; smooth texture and balanced fit; replace only the T-shirt; maintain trousers, jacket, and environment exactly'
       },
       { 
         name: 'Henley Cotton Tee',
         image: './../../assets/styles/men/T-sherts/Henley-Cotton.jpg',
         defaultColor: 'light beige',
-        prompt: 'short-sleeve Henley T-shirt in {color}, three buttons at neckline, textured cotton fabric'
+        prompt:
+          '{color} short-sleeve Henley-style T-shirt with three buttons at neckline and textured cotton weave; modify only the shirt; keep all other outfit elements unchanged'
       },
       { 
         name: 'V-Neck Tee',
         image: './../../assets/styles/men/T-sherts/V-Neck-Grey.jpg',
         defaultColor: 'grey',
-        prompt: '{color} V-neck T-shirt, lightweight cotton, simple casual design'
+        prompt:
+          '{color} lightweight V-neck cotton T-shirt with short sleeves and smooth surface; replace only the T-shirt; retain jacket, pants, and overall lighting precisely'
       },
       { 
         name: 'Pocket Tee',
         image: './../../assets/styles/men/T-sherts/Pocket.jpg',
         defaultColor: 'olive green',
-        prompt: '{color} T-shirt with a small front chest pocket, regular fit, soft texture'
+        prompt:
+          '{color} cotton T-shirt with small front chest pocket; smooth surface and standard fit; change only the T-shirt while keeping all other visible clothing the same'
       },
       { 
-        name: 'Retro Logo Tee',
+        name: 'Retro Style Tee',
         image: './../../assets/styles/men/T-sherts/Retro-Logo.jpg',
         defaultColor: 'cream',
-        prompt: '{color} T-shirt with vintage eagle logo print, retro-style graphic, worn cotton texture'
+        prompt:
+          '{color} retro-inspired T-shirt with faint vintage pattern; soft worn cotton surface, no visible text; modify only the shirt layer; keep rest of outfit and body intact'
       },
       { 
         name: 'Textured Tee',
         image: './../../assets/styles/men/T-sherts/Textured-Green.jpg',
         defaultColor: 'deep green',
-        prompt: '{color} textured T-shirt, round neck, short sleeves, subtle woven pattern'
+        prompt:
+          '{color} textured cotton T-shirt with subtle woven pattern and short sleeves; balanced regular fit; replace only the T-shirt, preserving all other outfit elements'
       },
     ]
   }
@@ -312,65 +328,76 @@ export const MEN_PANTS: TitleCategory[] = [
         name: 'Chino Khaki Pants',
         image: './../../assets/styles/men/Pants/Chino-Khaki.jpg',
         defaultColor: 'khaki beige',
-        prompt: '{color} chino pants, straight fit, cotton twill fabric, back welt pocket with button, casual refined look'
+        prompt:
+          '{color} chino pants with straight tailored leg and subtle twill texture; neat welt back pocket and button detail; modify only the pants area, keeping upper garments, shoes, and lighting unchanged'
       },
       { 
         name: 'Slim Fit Pants',
         image: './../../assets/styles/men/Pants/Slim-Fit-Black.jpg',
         defaultColor: 'black',
-        prompt: '{color} slim-fit trousers, smooth stretch fabric, narrow leg cut, modern minimalist formal style'
+        prompt:
+          '{color} slim-fit trousers with clean tapered shape and smooth matte finish; modern cut; update only the trousers while preserving jacket, shoes, and full body proportions'
       },
       { 
         name: 'Linen Beige Pants',
         image: './../../assets/styles/men/Pants/Linen-Beige.jpg',
         defaultColor: 'light beige linen',
-        prompt: '{color} linen pants, soft and airy texture, straight leg, drawstring waist, relaxed summer look'
+        prompt:
+          '{color} linen trousers with straight leg and visible weave texture; lightweight summer fabric; replace only the pants section without altering upper outfit, posture, or background'
       },
       { 
         name: 'Cargo Pants',
         image: './../../assets/styles/men/Pants/Cargo-Olive.jpg',
         defaultColor: 'olive green',
-        prompt: '{color} cotton cargo pants with large side pockets, straight relaxed leg, durable outdoor utility design'
+        prompt:
+          '{color} cotton cargo pants with side flap pockets and straight legs; sturdy matte surface; modify only the pant layer, keeping shirt, jacket, and shoes identical'
       },
       { 
         name: 'Pleated Trousers',
         image: './../../assets/styles/men/Pants/Pleated-Trousers.jpg',
         defaultColor: 'mid grey',
-        prompt: '{color} pleated formal trousers, pressed crease front, tailored fit, smooth wool-blend texture'
+        prompt:
+          '{color} formal pleated trousers with pressed crease and tailored leg; wool-blend fabric with smooth finish; adjust only the trousers, preserving upper clothing and lighting'
       },
       { 
         name: 'Navy Dress Pants',
         image: './../../assets/styles/men/Pants/Navy-Dress.jpg',
         defaultColor: 'navy blue',
-        prompt: '{color} dress trousers, sleek and slim, formal structured look, smooth lightweight fabric'
+        prompt:
+          '{color} slim-cut dress trousers with flat front and clean surface; lightweight structured fabric; update only the pants region without changing jacket, shirt, or pose'
       },
       { 
         name: 'Smart Pants',
         image: './../../assets/styles/men/Pants/Grey-Smart.jpg',
         defaultColor: 'light grey',
-        prompt: '{color} smart office trousers, slightly tapered cut, polished surface texture, business casual tone'
+        prompt:
+          '{color} office-style trousers with subtle taper and polished matte finish; formal look; modify only the pants, keeping upper outfit and environment unchanged'
       },
       { 
         name: 'Relaxed Fit Pants',
         image: './../../assets/styles/men/Pants/Relaxed-Fit.jpg',
         defaultColor: 'sand beige',
-        prompt: '{color} relaxed fit cotton pants, drawstring waist, loose leg, natural texture, comfort casual feel'
+        prompt:
+          '{color} cotton pants with adjustable waistband and soft drape; straight leg; replace only the pant area while keeping upper garments and shoes the same'
       },
       { 
         name: 'Cotton Drawstring Pants',
         image: './../../assets/styles/men/Pants/Cotton-Drawstring.jpg',
         defaultColor: 'ash grey',
-        prompt: '{color} cotton drawstring pants, lounge-style fit, soft textured weave, minimal seams, everyday comfort'
+        prompt:
+          '{color} drawstring cotton trousers with smooth texture and straight relaxed line; minimal seams; modify pants only, preserving all other visible elements'
       },
       { 
         name: 'Streetwear Cargo Pants',
         image: './../../assets/styles/men/Pants/Streetwear-Cargo.jpg',
         defaultColor: 'dark army green',
-        prompt: '{color} streetwear cargo jogger pants, cuffed ankles, side utility pockets, relaxed fit, urban modern look'
+        prompt:
+          '{color} street-style cargo pants with cuffed ankles and clean side pockets; matte cotton fabric; change only the pant layer without touching shoes, jacket, or lighting setup'
       },
     ]
   }
 ];
+
 
 
 
@@ -382,67 +409,77 @@ export const MEN_JEANS: TitleCategory[] = [
         name: 'Classic Jeans',
         image: './../../assets/styles/men/Jeans/Classic-Blue.jpg',
         defaultColor: 'medium blue denim',
-        prompt: '{color} straight-leg jeans, mid-rise, slightly faded wash, classic five-pocket denim style'
+        prompt:
+          '{color} straight-leg denim jeans with natural mid-rise and light washed tone; classic five-pocket structure; modify only the jeans while keeping shoes, upper clothing, and background unchanged'
       },
       { 
         name: 'Slim Fit Jeans',
         image: './../../assets/styles/men/Jeans/Slim-Fit.jpg',
         defaultColor: 'dark indigo denim',
-        prompt: '{color} slim-fit jeans, soft stretch denim, dark clean tone, modern streamlined silhouette'
+        prompt:
+          '{color} slim-fit denim jeans with clean dark tone and subtle stretch texture; smooth surface; replace jeans only without altering jacket, shoes, or lighting'
       },
       { 
         name: 'Straight Fit Jeans',
         image: './../../assets/styles/men/Jeans/Straight-Fit.jpg',
         defaultColor: 'light indigo denim',
-        prompt: '{color} straight-fit jeans, regular rise, softly washed denim with gentle tonal fading, casual everyday look'
+        prompt:
+          '{color} straight-fit jeans made of soft washed denim with mild fading; natural casual tone; update jeans area only, keeping all other garments intact'
       },
       { 
         name: 'Wash Jeans',
         image: './../../assets/styles/men/Jeans/Dark-Wash.jpg',
         defaultColor: 'deep navy wash',
-        prompt: '{color} dark-wash jeans, smooth texture, refined tone, subtle fading, sleek smart-casual style'
+        prompt:
+          '{color} dark-wash denim trousers with smooth matte finish and uniform tone; slight natural fading; change jeans only, preserving upper outfit and body geometry'
       },
-      { 
-        name: 'Ripped Jeans',
-        image: './../../assets/styles/men/Jeans/Ripped.jpg',
-        defaultColor: 'faded blue denim',
-      prompt: '{color} denim jeans with soft aged texture and gentle tonal fading, relaxed street style'
-
-      },
-
+  { 
+  name: 'Ripped Jeans',
+  image: './../../assets/styles/men/Jeans/Ripped.jpg',
+  defaultColor: 'faded blue denim',
+  prompt:
+    '{color} denim jeans with light worn wash and small natural ripped details on knees and thighs; subtle frayed edges, authentic denim texture; modify jeans only, keeping shirt, jacket, shoes, and lighting unchanged'
+}
+,
       { 
         name: 'Tapered Fit Jeans',
         image: './../../assets/styles/men/Jeans/Tapered-Fit.jpg',
         defaultColor: 'medium blue wash',
-        prompt: '{color} tapered jeans, gently narrowing from knee to ankle, mild tonal fading, soft stretch denim'
+        prompt:
+          '{color} tapered denim jeans narrowing gently from knee to ankle; soft washed fabric; modify jeans area only, preserving upper body and lighting'
       },
       { 
         name: 'Washed Grey Jeans',
         image: './../../assets/styles/men/Jeans/Washed-Grey.jpg',
         defaultColor: 'washed grey denim',
-        prompt: '{color} grey-wash jeans, smooth fabric, gentle fading, straight cut, natural denim texture'
+        prompt:
+          '{color} grey-wash denim jeans with smooth consistent tone and mild fading; straight shape; update jeans layer only, keeping all other clothing unchanged'
       },
       { 
         name: 'Relaxed Fit Jeans',
         image: './../../assets/styles/men/Jeans/Relaxed-Fit.jpg',
         defaultColor: 'light blue denim',
-        prompt: '{color} relaxed-fit jeans, loose straight leg, soft faded denim, laid-back casual style'
+        prompt:
+          '{color} straight-cut denim jeans with gentle loose fit and faded surface; natural worn texture; modify only jeans, not shoes or upper garments'
       },
       { 
         name: 'Light Jeans',
         image: './../../assets/styles/men/Jeans/Light-Blue.jpg',
         defaultColor: 'pale blue denim',
-        prompt: '{color} light-wash jeans, straight fit, soft cotton denim, simple casual tone'
+        prompt:
+          '{color} light-wash denim jeans with smooth cotton weave and even tone; standard straight cut; replace jeans only, preserving rest of outfit'
       },
       { 
         name: 'Vintage Distressed Jeans',
         image: './../../assets/styles/men/Jeans/Vintage-Distressed.jpg',
         defaultColor: 'light vintage blue denim',
-        prompt: '{color} denim jeans with subtle aged texture, gentle tonal fading, classic retro-inspired style'
+        prompt:
+          '{color} vintage-style denim jeans with subtle aged fading and classic five-pocket detail; modify jeans only without touching jacket, shoes, or background'
       }
     ]
   }
 ];
+
 
 
 
@@ -455,65 +492,71 @@ export const MEN_SUITS: TitleCategory[] = [
         name: 'Classic Suit',
         image: './../../assets/styles/men/Suit/Classic-Black.jpg',
         defaultColor: 'black',
-        prompt: '{color} two-piece suit with notch lapel jacket and matching trousers, smooth wool-blend fabric, formal business style'
+        prompt:
+          '{color} full matching suit — jacket and trousers in the same tone and fabric; smooth wool-blend with subtle matte texture; classic two-button notch-lapel design; modify only the suit, keeping shirt, tie, face, and background unchanged'
       },
       { 
         name: 'Navy Slim Fit Suit',
         image: './../../assets/styles/men/Suit/Navy-Slim-Fit.jpg',
         defaultColor: 'navy blue',
-        prompt: '{color} slim-fit suit with single-breasted jacket, two buttons, flat-front trousers, lightweight fine wool fabric'
+        prompt:
+          '{color} coordinated slim-fit suit with identical jacket and trousers; fine wool fabric, single-breasted two-button closure; clean modern cut; adjust only the suit layer, keeping shirt, tie, and lighting intact'
       },
       { 
         name: 'Grey Two-Piece Suit',
         image: './../../assets/styles/men/Suit/Grey-Two-Piece.jpg',
         defaultColor: 'medium grey',
-        prompt: '{color} two-piece suit, tailored fit, soft wool-blend fabric, subtle texture, modern professional look'
+        prompt:
+          '{color} matching two-piece tailored suit with same-tone jacket and trousers; soft wool-blend fabric, smooth surface; refine only the suit texture and color, preserving shirt and proportions exactly'
       },
       { 
         name: 'Tuxedo Dinner Suit',
         image: './../../assets/styles/men/Suit/Tuxedo-Dinner.jpg',
         defaultColor: 'jet black',
-        prompt: '{color} tuxedo suit with satin peak lapels, crisp white shirt, black tie, classic formal evening wear'
+        prompt:
+          '{color} tuxedo set with identical satin-lapel jacket and trousers in same black tone; single-button closure, formal cut; modify tuxedo layer only while keeping shirt, bow tie, and facial details unchanged'
       },
       { 
         name: 'Wool Suit',
         image: './../../assets/styles/men/Suit/Brown-Wool.jpg',
         defaultColor: 'chestnut brown',
-        prompt: '{color} wool suit with fine texture, single-breasted jacket, notch lapel, warm tone suitable for fall or winter'
+        prompt:
+          '{color} coordinated wool suit, jacket and trousers perfectly matched; fine textured wool, single-breasted design; warm autumn tone; adjust only the suit fabric and color, preserving shirt and background'
       },
-      { 
-        name: 'Checked Pattern Suit',
-        image: './../../assets/styles/men/Suit/Checked-Pattern.jpg',
-        defaultColor: 'light grey check',
-        prompt: '{color} patterned suit featuring fine check design, tailored fit, notch lapel jacket, classic yet modern look'
-      },
+
       { 
         name: 'Beige Summer Suit',
         image: './../../assets/styles/men/Suit/Beige-Summer.jpg',
         defaultColor: 'beige',
-        prompt: '{color} lightweight summer suit with single-breasted jacket, two buttons, breathable cotton-linen blend fabric'
+        prompt:
+          '{color} lightweight summer suit with jacket and trousers made from the same cotton-linen blend; breathable, soft drape; modify only the suit tone, keeping shirt and lighting natural'
       },
       { 
         name: 'Double Breasted Suit',
         image: './../../assets/styles/men/Suit/Double-Breasted.jpg',
         defaultColor: 'deep navy',
-        prompt: '{color} double-breasted suit with six buttons, structured shoulders, elegant tailored design, classic formal wear'
+        prompt:
+          '{color} coordinated double-breasted suit with identical jacket and trousers; six-button closure, structured shoulders; smooth refined finish; alter suit only without changing shirt, tie, or proportions'
       },
       { 
         name: 'Blazer',
         image: './../../assets/styles/men/Suit/Blue-Blazer.jpg',
         defaultColor: 'dark navy',
-        prompt: '{color} blazer with two-button closure, lightweight structured fit, paired with matching trousers, semi-formal business style'
+        prompt:
+          '{color} single blazer jacket in refined navy wool-blend; intended to pair with trousers of same or neutral tone; adjust only blazer, keeping shirt, trousers, and background untouched'
       },
       { 
         name: 'Charcoal Business Suit',
         image: './../../assets/styles/men/Suit/Charcoal-Business.jpg',
         defaultColor: 'charcoal grey',
-        prompt: '{color} business suit with sharp cut, fine wool texture, single-breasted jacket and matching trousers, executive professional look'
-      },
+        prompt:
+          '{color} matching business suit with single-breasted tailored jacket and same-tone trousers; fine wool surface, clean executive silhouette; modify only the suit fabric and color, preserving all other details'
+      }
     ]
   }
 ];
+
+
 
 
 export const MEN_JACKETS: TitleCategory[] = [
@@ -524,65 +567,76 @@ export const MEN_JACKETS: TitleCategory[] = [
         name: 'Leather Jacket',
         image: './../../assets/styles/men/Outerwear/Leather.jpg',
         defaultColor: 'black leather',
-        prompt: '{color} biker-style leather jacket, slightly glossy finish, silver zippers and pockets, fitted silhouette'
+        prompt:
+          '{color} biker-style leather jacket with subtle sheen and silver zippers; fitted cut and structured shoulders; modify only the jacket layer, keeping shirt, pants, and face unchanged'
       },
       { 
         name: 'Bomber Jacket',
         image: './../../assets/styles/men/Outerwear/Bomber.jpg',
         defaultColor: 'olive green',
-        prompt: '{color} bomber jacket with ribbed collar, cuffs, and hem, front zipper, lightweight nylon material'
+        prompt:
+          '{color} bomber jacket with ribbed collar, cuffs, and hem; lightweight nylon surface with smooth texture; update only jacket layer while preserving all inner clothing and lighting'
       },
       { 
         name: 'Denim Jacket',
         image: './../../assets/styles/men/Outerwear/Denim.jpg',
         defaultColor: 'medium blue denim',
-        prompt: '{color} denim jacket with button front, two chest pockets, classic casual style'
+        prompt:
+          '{color} denim jacket with front buttons and twin chest pockets; matte cotton texture with visible seams; alter jacket only, keeping shirt, pants, and proportions identical'
       },
       { 
         name: 'Puffer Jacket',
         image: './../../assets/styles/men/Outerwear/Puffer.jpg',
         defaultColor: 'black',
-        prompt: '{color} puffer jacket with quilted padding, high collar, front zipper, warm insulated winter style'
+        prompt:
+          '{color} quilted puffer jacket with high collar and front zipper; evenly padded synthetic fabric; change only the jacket without touching shirt, pants, or environment'
       },
       { 
         name: 'Trench Coat',
         image: './../../assets/styles/men/Outerwear/Trench-Coat.jpg',
         defaultColor: 'beige',
-        prompt: 'long {color} trench coat with belt at waist, double-breasted front, epaulets, and smooth waterproof fabric'
+        prompt:
+          'long {color} trench coat with waist belt and double-breasted buttons; smooth water-resistant surface and soft folds; update coat layer only, keeping inner outfit and background consistent'
       },
       { 
         name: 'Peacoat Navy',
         image: './../../assets/styles/men/Outerwear/Peacoat-Navy.jpg',
         defaultColor: 'navy blue',
-        prompt: 'double-breasted {color} wool peacoat, wide lapels, front buttons, structured classic naval style'
+        prompt:
+          'double-breasted {color} wool peacoat with broad lapels and front buttons; dense fabric with matte finish; modify only coat layer, preserving shirt, trousers, and lighting'
       },
       { 
         name: 'Varsity Jacket',
         image: './../../assets/styles/men/Outerwear/Varsity.jpg',
         defaultColor: 'royal blue and cream',
-        prompt: '{color} varsity jacket with contrast sleeves, striped ribbed cuffs and collar, button front, sporty college style'
+        prompt:
+          '{color} varsity jacket with smooth body and contrast sleeves; striped ribbed collar and cuffs; change only jacket fabric and colors, keeping shirt and body posture identical'
       },
       { 
         name: 'Parka Coat',
         image: './../../assets/styles/men/Outerwear/Parka-Coat.jpg',
         defaultColor: 'dark green',
-        prompt: '{color} parka coat with fur-trimmed hood, front pockets, insulated lining, long winter outerwear'
+        prompt:
+          '{color} parka coat with fur-trimmed hood, front flap pockets, and insulated lining; matte winter fabric; modify only the outer coat, not the clothes underneath or background'
       },
       { 
         name: 'Windbreaker',
         image: './../../assets/styles/men/Outerwear/Windbreaker.jpg',
         defaultColor: 'sky blue',
-        prompt: '{color} windbreaker jacket with zipper closure, high collar, lightweight fabric, sporty casual design'
+        prompt:
+          '{color} windbreaker with front zipper and stand collar; light nylon surface with soft folds; adjust only the jacket, keeping T-shirt, pants, and face untouched'
       },
       { 
         name: 'Corduroy Jacket',
         image: './../../assets/styles/men/Outerwear/Corduroy.jpg',
         defaultColor: 'brown',
-        prompt: '{color} corduroy jacket with button front, two flap pockets, soft textured cotton, relaxed casual style'
-      },
+        prompt:
+          '{color} corduroy jacket with button front and flap pockets; fine ribbed cotton texture; change jacket only, leaving shirt, pants, and lighting fully intact'
+      }
     ]
   }
 ];
+
 
 
 export const MEN_HOODIES: TitleCategory[] = [
@@ -594,74 +648,76 @@ export const MEN_HOODIES: TitleCategory[] = [
         image: './../../assets/styles/men/Hoodies/Grey-Pullover.jpg',
         defaultColor: 'light grey',
         prompt:
-          '{color} pullover hoodie made of soft cotton fleece, front kangaroo pocket, drawstring hood, relaxed casual fit'
+          '{color} pullover hoodie with drawstring hood and front kangaroo pocket; soft cotton fleece texture; relaxed fit; modify hoodie only, preserving all other clothes and background'
       },
-      {
-        name: 'Zip Hoodie',
-        image: './../../assets/styles/men/Hoodies/Black-Zip.jpg',
-        defaultColor: 'black',
-        prompt:
-          '{color} zip-up hoodie with metal zipper, front pockets, drawstring hood, soft fleece fabric, casual everyday style'
-      },
+    {
+  name: 'Zip Hoodie',
+  image: './../../assets/styles/men/Hoodies/Black-Zip.jpg',
+  defaultColor: 'black',
+  prompt:
+    'replace current upper clothing with a {color} zip-up hoodie; natural fit over shoulders with visible hood and smooth fleece texture; keep head, face, pants, and background fully visible and unchanged'
+}
+,
       {
         name: 'Beige Oversized Hoodie',
         image: './../../assets/styles/men/Hoodies/Beige-Oversized.jpg',
         defaultColor: 'beige',
         prompt:
-          '{color} oversized hoodie with dropped shoulders, large hood, front kangaroo pocket, relaxed streetwear style'
+          '{color} oversized hoodie with dropped shoulders and wide sleeves; front pocket and large hood; loose fit cotton fleece; change only hoodie fabric and tone, not other garments'
       },
       {
         name: 'Graphic Street Hoodie',
         image: './../../assets/styles/men/Hoodies/Graphic-Street.jpg',
         defaultColor: 'black',
         prompt:
-          '{color} street-style hoodie with bold graphic motif on the chest, ribbed cuffs and hem, modern urban look'
+          '{color} street-style hoodie with subtle graphic motif on chest; ribbed cuffs and hem; medium-weight fleece; adjust only hoodie, keeping rest of outfit and body intact'
       },
       {
         name: 'Sports Hoodie',
         image: './../../assets/styles/men/Hoodies/Blue-Sports.jpg',
         defaultColor: 'blue',
         prompt:
-          '{color} athletic performance hoodie made from lightweight stretch fabric, moisture-wicking, slim fit with drawstring hood'
+          '{color} athletic zip hoodie made from lightweight stretch fabric; slim fit with drawstring hood and elastic cuffs; modify only hoodie without changing shirt or environment'
       },
-      {
-        name: 'Minimal Hoodie',
-        image: './../../assets/styles/men/Hoodies/White-Minimal.jpg',
-        defaultColor: 'white',
-        prompt:
-          '{color} minimal design hoodie with no visible logo, clean lines, front pocket, and drawstring hood'
-      },
+{
+  name: 'Minimal Hoodie',
+  image: './../../assets/styles/men/Hoodies/White-Minimal.jpg',
+  defaultColor: 'white',
+  prompt:
+    'replace current upper clothing with a {color} minimal hoodie; smooth cotton surface, no visible logo, front pocket and adjustable hood; worn naturally on the body; keep head, face, pants, and background unchanged'
+},
       {
         name: 'Classic Hoodie',
         image: './../../assets/styles/men/Hoodies/Red-Classic.jpg',
         defaultColor: 'red',
         prompt:
-          '{color} classic cotton hoodie, standard fit with front pocket and adjustable hood, simple everyday design'
+          '{color} classic cotton hoodie with drawstring hood and kangaroo pocket; regular fit; soft matte texture; alter hoodie only, preserve shirt, trousers, and lighting'
       },
       {
         name: 'Earth Tone Hoodie',
         image: './../../assets/styles/men/Hoodies/Brown-Earth-Tone.jpg',
         defaultColor: 'brown',
         prompt:
-          '{color} earth-tone hoodie in soft brushed fleece, relaxed cut, warm and cozy look for fall or winter'
+          '{color} fleece hoodie in warm earth tone; relaxed cut with soft brushed texture; modify hoodie only, keeping inner outfit and proportions exactly the same'
       },
       {
         name: 'Hoodie',
         image: './../../assets/styles/men/Hoodies/Olive-Green.jpg',
         defaultColor: 'olive green',
         prompt:
-          '{color} casual hoodie with kangaroo pocket, cotton-poly blend, and adjustable drawstring hood'
+          '{color} casual hoodie with adjustable hood and front pocket; medium-weight cotton-poly fabric; update hoodie only without touching shirt or pants'
       },
       {
         name: 'Zip Sweatshirt',
         image: './../../assets/styles/men/Hoodies/Zip-Sweatshirt.jpg',
         defaultColor: 'light grey',
         prompt:
-          '{color} zip-front sweatshirt with ribbed cuffs and hem, soft cotton material, simple and functional'
+          '{color} zip-front sweatshirt made of soft cotton blend; ribbed cuffs and hem; smooth matte surface; modify sweatshirt only, keeping outfit and background unchanged'
       }
     ]
   }
 ];
+
 
 
 
@@ -674,74 +730,76 @@ export const MEN_SHORTS: TitleCategory[] = [
         image: './../../assets/styles/men/Shorts/Denim.jpg',
         defaultColor: 'mid blue denim',
         prompt:
-          '{color} denim shorts, above-knee (~7-inch inseam), rolled hems, five pockets, visible stitching; casual summer style with natural fabric texture'
+          'replace current trousers with {color} denim shorts, above-knee (~7-inch inseam), rolled hems, five pockets, visible stitching; casual summer style; keep upper clothes, head, and background unchanged'
       },
       {
         name: 'Chino Shorts',
         image: './../../assets/styles/men/Shorts/Chino.jpg',
         defaultColor: 'beige',
         prompt:
-          '{color} chino shorts, knee-length or slightly above knee (~7-9 inch inseam), button closure, side pockets, cotton twill; simple and lightweight design'
+          'replace existing trousers with {color} chino shorts, knee-length or slightly above knee (~7–9 inch inseam), button closure, side pockets, cotton twill; keep shirt, head, and background intact'
       },
       {
         name: 'Cargo Shorts',
         image: './../../assets/styles/men/Shorts/Cargo.jpg',
         defaultColor: 'olive green',
         prompt:
-          '{color} cargo shorts with large flap side pockets, durable cotton canvas, knee-length; utility-inspired design with relaxed fit'
+          'replace lower clothing with {color} cargo shorts, large flap pockets, durable cotton canvas, knee-length, relaxed fit; maintain upper garments, head, and scene unchanged'
       },
       {
         name: 'Linen Shorts',
         image: './../../assets/styles/men/Shorts/Linen.jpg',
         defaultColor: 'light beige linen',
         prompt:
-          '{color} linen shorts with drawstring waistband, lightweight and breathable, above-knee (~7-inch inseam); soft fabric with relaxed summer feel'
+          'replace pants with {color} linen shorts, drawstring waistband, lightweight breathable fabric, above-knee (~7-inch inseam); keep all upper clothes, face, and lighting consistent'
       },
       {
         name: 'Sweat Shorts',
         image: './../../assets/styles/men/Shorts/Sweat.jpg',
         defaultColor: 'light grey',
         prompt:
-          '{color} sweat shorts made of soft cotton fleece, drawstring waist, relaxed fit, above-knee (~7-inch inseam); comfortable casual style'
+          'replace current trousers with {color} sweat shorts made of soft cotton fleece, drawstring waist, relaxed fit, above-knee (~7-inch inseam); retain all upper garments, head, and background exactly'
       },
       {
         name: 'Athletic Shorts',
         image: './../../assets/styles/men/Shorts/Athletic.jpg',
         defaultColor: 'black',
         prompt:
-          '{color} athletic shorts in lightweight performance fabric, elastic waistband, above-knee (~5-7 inch inseam); sport-inspired look with smooth texture'
+          'replace trousers with {color} athletic shorts in lightweight performance fabric, elastic waistband, above-knee (~5–7 inch inseam); keep shirt, head, and environment identical'
       },
       {
         name: 'Tailored Shorts',
         image: './../../assets/styles/men/Shorts/Tailored.jpg',
         defaultColor: 'navy blue',
         prompt:
-          '{color} tailored shorts with pleated front, clean hem, structured silhouette, knee-length; refined summer style with neat appearance'
+          'replace lower clothing with {color} tailored shorts, pleated front, clean hem, structured silhouette, knee-length; maintain shirt, face, and background as is'
       },
       {
         name: 'Plaid Shorts',
         image: './../../assets/styles/men/Shorts/Plaid.jpg',
         defaultColor: 'navy and olive plaid',
         prompt:
-          '{color} plaid pattern shorts with button front and belt loops, above-knee (~7-inch inseam); classic casual design with textured fabric'
+          'replace trousers with {color} plaid shorts, button front and belt loops, above-knee (~7-inch inseam); keep upper outfit and background unchanged'
       },
       {
         name: 'Cotton Relax Shorts',
         image: './../../assets/styles/men/Shorts/Cotton-Relax.jpg',
         defaultColor: 'sand beige',
         prompt:
-          '{color} relaxed cotton shorts with drawstring waist, soft texture, above-knee (~7-inch inseam); loose summer fit for comfort'
+          'replace pants with {color} relaxed cotton shorts with drawstring waist, soft texture, above-knee (~7-inch inseam); preserve shirt, body shape, and lighting exactly'
       },
       {
         name: 'Street Style Shorts',
         image: './../../assets/styles/men/Shorts/Street-Style.jpg',
         defaultColor: 'charcoal grey',
         prompt:
-          '{color} street-style shorts with dropped-crotch silhouette, cargo pockets, elastic waistband, above-knee (~7-inch inseam); modern urban look with casual fit'
+          'replace trousers with {color} street-style shorts featuring dropped-crotch silhouette, cargo pockets, elastic waistband, above-knee (~7-inch inseam); keep shirt, head, and background unchanged'
       }
     ]
   }
 ];
+
+
 
 
 
@@ -754,65 +812,77 @@ export const MEN_SHOES: TitleCategory[] = [
         name: 'Oxford Shoes',
         image: './../../assets/styles/men/Shoes/Black-Oxford.jpg',
         defaultColor: 'black',
-        prompt: '{color} polished leather oxford dress shoes with closed lacing and sleek toe cap, worn with formal or business attire'
+        prompt:
+          'replace current footwear with {color} polished leather Oxford dress shoes featuring closed lacing and sleek toe cap; maintain legs, trousers, and background exactly as in the input image'
       },
-      {
-        name: 'Brogues',
-        image: './../../assets/styles/men/Shoes/Brown-Brogues.jpg',
-        defaultColor: 'tan brown',
-        prompt: '{color} leather brogues with decorative perforations, suitable for smart casual or semi-formal looks'
-      },
+    {
+  name: 'Brogues',
+  image: './../../assets/styles/men/Shoes/Brown-Brogues.jpg',
+  defaultColor: 'tan brown',
+  prompt:
+    'replace current footwear with {color} leather brogue shoes featuring closed lacing and subtle perforation details; shoes sit naturally on the existing feet with realistic contact and shadows; keep trousers, legs, and background exactly unchanged'
+}
+,
       {
         name: 'Chelsea Boots',
         image: './../../assets/styles/men/Shoes/Chelsea-Boots.jpg',
         defaultColor: 'brown',
-        prompt: '{color} suede chelsea boots with elastic side panels and rounded toe, paired with slim trousers or jeans'
+        prompt:
+          'replace shoes with {color} suede Chelsea boots featuring elastic side panels and rounded toe; realistic shadow and floor reflection; keep trousers, legs, and background intact'
       },
       {
         name: 'Desert Boots',
         image: './../../assets/styles/men/Shoes/Desert-Boots.jpg',
         defaultColor: 'sand beige',
-        prompt: '{color} desert boots made of soft suede, casual mid-ankle height design with crepe sole, worn with chinos or shorts'
+        prompt:
+          'replace footwear with {color} suede desert boots, mid-ankle height, crepe sole; worn naturally with unchanged pants and background'
       },
       {
         name: 'High-top Sneakers',
         image: './../../assets/styles/men/Shoes/High-top.jpg',
         defaultColor: 'white and gray',
-        prompt: '{color} high-top sneakers with padded ankle collar and sporty silhouette, ideal for casual or streetwear outfits'
+        prompt:
+          'replace current shoes with {color} high-top sneakers featuring padded ankle collar and sporty silhouette; keep trousers, posture, and environment identical'
       },
       {
         name: 'Sport Trainers',
         image: './../../assets/styles/men/Shoes/Sport-Trainers.jpg',
         defaultColor: 'light gray',
-        prompt: '{color} athletic running trainers with mesh upper and rubber sole, designed for active or casual outfits'
+        prompt:
+          'replace current footwear with {color} athletic trainers made of mesh fabric and rubber sole; maintain pants, legs, and lighting as in original image'
       },
       {
         name: 'White Sneakers',
         image: './../../assets/styles/men/Shoes/White-Sneakers.jpg',
         defaultColor: 'white',
-        prompt: '{color} minimalist low-top leather sneakers with clean silhouette, versatile style suitable for casual or smart-casual wear'
+        prompt:
+          'replace shoes with {color} minimalist low-top leather sneakers; clean silhouette and realistic shadows; preserve trousers, legs, and background exactly'
       },
       {
         name: 'Loafers',
         image: './../../assets/styles/men/Shoes/Loafers.jpg',
         defaultColor: 'dark brown',
-        prompt: '{color} leather loafers with slip-on design and smooth finish, classic style for semi-formal or business casual looks'
+        prompt:
+          'replace current footwear with {color} leather loafers featuring slip-on design and smooth polished surface; retain pants and overall scene unchanged'
       },
       {
         name: 'Leather Moccasins',
         image: './../../assets/styles/men/Shoes/Leather.jpg',
         defaultColor: 'chocolate brown',
-        prompt: '{color} driving moccasins with soft leather construction and stitched toe detail, ideal for relaxed smart-casual outfits'
+        prompt:
+          'replace shoes with {color} soft leather driving moccasins with stitched toe detail; preserve trousers, legs, and original lighting intact'
       },
       {
         name: 'Sandals',
         image: './../../assets/styles/men/Shoes/Sandals.jpg',
         defaultColor: 'tan brown',
-        prompt: '{color} leather sandals with cross straps and buckle, comfortable open design for summer or beachwear looks'
+        prompt:
+          'replace current shoes with {color} leather sandals featuring cross straps and buckle closure; open comfortable summer design; keep legs, shorts, and background unchanged'
       }
     ]
   }
 ];
+
 
 
 // export const MEN_ACCESSORIES: TitleCategory[] = [
