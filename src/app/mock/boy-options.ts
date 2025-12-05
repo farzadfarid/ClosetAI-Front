@@ -34,7 +34,8 @@ export const BOY_CATEGORIES = [
 
   // 🎒 Accessories
   { key: 'cap', label: 'Caps & Hats', icon: './../../assets/styles/boys/Categories/Caps.jpg' },
-  { key: 'scarf', label: 'Scarves', icon: './../../assets/styles/boys/Categories/Scarves.jpg' }
+  { key: 'scarf', label: 'Scarves', icon: './../../assets/styles/boys/Categories/Scarves.jpg' },
+  //  { key: 'background', label: 'Backgrounds', icon: './../../assets/styles/men/Categories/background.jpg' },
 ];
 
 export const BOY_TSHIRTS: BoyTitleCategory[] = [

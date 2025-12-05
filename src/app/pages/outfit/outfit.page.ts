@@ -2,44 +2,36 @@ import { ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/co
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {
-  IonHeader, IonContent, IonToolbar, IonTitle, IonButtons, IonButton,IonToggle, IonIcon, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonNote } from '@ionic/angular/standalone';
+  IonHeader, IonContent, IonToolbar, IonTitle, IonButtons, IonButton,IonToggle, IonIcon, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonNote, IonRefresher, IonRefresherContent } from '@ionic/angular/standalone';
 import { RouterLink } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
-import { UploadService, UploadResponse } from 'src/app/services/upload';
-import { buildCreativePromptForMen, buildOutfitPrompt, OutfitParams } from 'src/app/models/outfit-params';
+import { Closet } from 'src/app/services/closet';
+
+import { MenPromptInput } from 'src/app/models/menPromptInput.model';
 import { ToastService } from 'src/app/services/toast';
 
 import { addIcons } from 'ionicons';
 import { cloudUploadOutline, downloadOutline, homeOutline } from 'ionicons/icons';
 
-import {
-  MEN_CATEGORIES,
-  MEN_SHIRTS,
-  MEN_TSHIRTS,
-  MEN_PANTS,
-  MEN_JEANS,
-  MEN_SUITS,
-  MEN_JACKETS,
-  MEN_HOODIES,
-  MEN_SHORTS,
-  MEN_SHOES,
-  type TitleCategory,
-  type MenCategory,
-  MEN_BACKGROUNDS
-} from 'src/app/mock/outfit-options';
-
 import { LoadingComponent } from 'src/app/Core/Components/loading/loading.component';
 import { lastValueFrom } from 'rxjs';
+import { ClosetCategoryService } from 'src/app/services/closet-category';
+import { GroupType } from 'src/app/models/groupType.enum';
+import { ResponseClosetCategory } from '../../models/categoryResponse.model';
+import { ClosetItems } from 'src/app/models/closetItems.model';
+import { ClosetItemsService } from 'src/app/services/closet-items';
+import { SelectionSummaryComponent } from "../selection-summary.component";
+import { SelectionItem } from 'src/app/models/SelectionItem';
 
-// union type از کلیدهای دسته‌ها
-type MenCategoryKey = typeof MEN_CATEGORIES[number]['key'];
+// union type برای کلیدهای دسته‌ها
+type MenCategoryKey = string;
 
 @Component({
   selector: 'app-outfit',
   templateUrl: './outfit.page.html',
   styleUrls: ['./outfit.page.scss'],
   standalone: true,
-  imports: [IonNote, IonCardContent, IonCardTitle, IonCardHeader, IonCard, 
+  imports: [
     CommonModule,
     FormsModule,
     IonHeader,
@@ -51,13 +43,13 @@ type MenCategoryKey = typeof MEN_CATEGORIES[number]['key'];
     IonIcon,
     RouterLink,
     LoadingComponent,
-    IonToggle
-  ],
+    IonToggle, SelectionSummaryComponent, IonRefresher, IonRefresherContent],
 
 })
 export class OutfitPage {
   @ViewChild('outfitFileInput') outfitFileInput!: ElementRef<HTMLInputElement>;
   @ViewChild('userFileInput') userFileInput!: ElementRef<HTMLInputElement>;
+  @ViewChild(IonContent) ionContent!: IonContent;
 
   isLoading = false;
   imageurl = environment.imageUrl;
@@ -73,7 +65,7 @@ export class OutfitPage {
   pendingColors: Record<string, string | null> = {};
   selectedBackgroundPrompt: string | null = null;
   isCreativeMode = false;
-
+  selectionSummary: SelectionItem[] = [];
 
   // پرامپت هر کتگوریِ انتخاب‌شده
 private selectedItemPrompts: Record<MenCategoryKey, string | null> = {
@@ -92,21 +84,79 @@ private selectedItemPrompts: Record<MenCategoryKey, string | null> = {
 
 
   // دسته‌ها و آیتم‌های مردانه
-  menCategories = MEN_CATEGORIES;
-  activeCategory: MenCategoryKey = MEN_CATEGORIES[0]?.key as MenCategoryKey;
-  selectedStyle: MenCategory | null = null;
-  selectedStyles: Record<MenCategoryKey, MenCategory | null> = {
-  shirt: null,
-  tshirt: null,
-  pants: null,
-  jeans: null,
-  suit: null,
-  jacket: null,
-  hoodie: null,
-  shorts: null,
-  shoes: null,
-  background:null,
-};
+  menCategoriesData: ResponseClosetCategory[] = [];
+  activeCategory: MenCategoryKey | null = null;
+  activeSubCategories: ResponseClosetCategory[] = [];
+  selectedStyle: any | null = null;
+  selectedStyles: Record<MenCategoryKey, any | null> = {};
+
+
+
+  onRemoveSelection(item: SelectionItem) {
+    console.log('🗑️ Removing selection:', item);
+    // حذف آیتم از انتخاب‌های کاربر
+    const categoryKey = item.category.toLowerCase() as MenCategoryKey;
+
+    // پاک کردن استایل انتخاب‌شده از آن گروه
+    this.selectedStyles[categoryKey] = null;
+
+    // پاک کردن پرامپت آن گروه
+    this.selectedItemPrompts[categoryKey] = null;
+
+    // پاک کردن رنگ آن گروه (اگر داشته باشد)
+    if (this.colorPalettes[categoryKey]) {
+      const newPalettes = { ...this.colorPalettes };
+      delete newPalettes[categoryKey];
+      this.colorPalettes = newPalettes;
+    }
+
+    // بروزرسانی selectionSummary
+    this.updateSelectionSummary();
+
+    this.cdRef.markForCheck();
+    console.log('✅ Selection removed. Current selections:', this.selectionSummary);
+  }
+
+  onClearAllSelections() {
+    // حذف تمام انتخاب‌های کاربر
+    this.selectedStyles = Object.keys(this.selectedStyles).reduce((acc, key) => {
+      acc[key as MenCategoryKey] = null;
+      return acc;
+    }, {} as Record<MenCategoryKey, any | null>);
+
+    this.selectedItemPrompts = Object.keys(this.selectedItemPrompts).reduce((acc, key) => {
+      acc[key as MenCategoryKey] = null;
+      return acc;
+    }, {} as Record<MenCategoryKey, string | null>);
+
+    this.colorPalettes = {};
+    this.selectedBackgroundPrompt = null;
+
+    // بروزرسانی selectionSummary
+    this.updateSelectionSummary();
+
+    this.cdRef.markForCheck();
+  }
+
+  private updateSelectionSummary() {
+    // ساخت خلاصهٔ انتخابات از selectedStyles
+    const entries = Object.entries(this.selectedStyles).filter(([_, style]) => !!style);
+    console.log('📊 updateSelectionSummary - selectedStyles entries:', entries);
+
+    this.selectionSummary = entries
+      .map(([category, style]) => ({
+        category: category.charAt(0).toUpperCase() + category.slice(1),
+        value: style?.name || '',
+        image: style?.image || ''
+      }));
+
+    console.log('📋 Updated selectionSummary:', this.selectionSummary);
+
+    // اسکرول به پایین برای دیدن color picker
+    setTimeout(() => {
+      this.ionContent?.scrollToBottom(300);
+    }, 100);
+  }
 
 
 
@@ -131,108 +181,99 @@ normalizeColorForTemplate(colorRaw: string | undefined, itemPromptTemplate: stri
 
 
 
-private resolveItemPrompt(style: MenCategory, categoryKey: MenCategoryKey): string {
-  // رنگ نهایی
-  const userColorForCat = this.colorPalettes[categoryKey]?.[0];
-  const globalUserColor = this.outfitParams.colorName || this.outfitParams.color;
-  const defaultColor = (style as any).defaultColor || 'neutral tone';
-
-  // قالب خام آیتم
-  const template = ((style as any).prompt || style.name || '').trim();
-
-  // رنگ را نسبت به قالب آیتم نرمال کن (مثلاً حذف "denim" اگر خود قالب "denim shorts" دارد)
-  const rawColor = userColorForCat || globalUserColor || defaultColor;
-  const finalColor = this.normalizeColorForTemplate(rawColor, template) || 'neutral tone';
-
-  // اعمال رنگ در قالب
-  let p = template.includes('{color}')
-    ? template.replace(/\{color\}/gi, finalColor)
-    : `${finalColor} ${template}`;
-
-  // نقشه‌ی واژگان حساس → امن
-  const map: Record<string, string> = {
-    print: 'pattern',
-    logo: 'motif',
-    brand: 'motif',
-    text: 'design',
-    badge: 'motif',
-    emblem: 'motif',
-    graphic: 'artistic',
-    neon: 'colorful',
-    vibrant: 'rich',
-    'lower garment area': ''
-  };
-  for (const [bad, safe] of Object.entries(map)) {
-    p = p.replace(new RegExp(`\\b${bad}\\b`, 'gi'), safe);
-  }
-
-  // حذف تکرارهای پشت‌سرهم (مثلاً "denim denim", "linen linen")
-  const dedupSet = ["denim", "linen", "cotton", "wool", "leather", "canvas", "twill", "shorts", "jeans", "pants"];
-  for (const w of dedupSet) {
-    p = p.replace(new RegExp(`\\b(${w})\\s+\\1\\b`, "gi"), "$1");
-  }
-
-  // اگر رنگ شامل همان جنس است و قالب هم همان جنس را دارد → جنسِ دوم را حذف کن (…color… denim denim shorts)
-p = p.replace(
-  /\b(denim|linen|cotton|wool|leather|canvas|twill)\s+(shorts)\b/gi,
-  (_match: string, fab: string, item: string): string => {
-    // اگر قبل از fab یک fab دیگر آمده، یکی را نگه‌دار
-    return `${fab} ${item}`;
-  }
-);
-
-
-  // پاکسازی کانکتورهای بی‌صاحب و علائم
-  p = p
-    .replace(/\s*(,|;)\s*(,|;)\s*/g, "; ")       // ویرگول/نقطه‌ویرگول‌های پیاپی
-    .replace(/\s*(,|;)\s*(and)\s*(,|;)\s*/gi, "; ") // ", and ," → "; "
-    .replace(/\b(and|or)\s*(,|;)\s*$/gi, "")     // "and ," در انتها
-    .replace(/\s{2,}/g, " ")
-    .trim();
-
-  return p;
+private resolveItemPrompt(item: ClosetItems): string {
+  // از سرور دریافت شد، می‌توانیم از prompt آن استفاده کنیم
+  return item.prompt || item.name || 'neutral tone';
 }
 
 
 
-  // مپ دیتای هر تب
-  private stylesByCategory: Record<MenCategoryKey, TitleCategory[]> = {
-    shirt: MEN_SHIRTS,
-    tshirt: MEN_TSHIRTS,
-    pants: MEN_PANTS,
-    jeans: MEN_JEANS,
-    suit: MEN_SUITS,
-    jacket: MEN_JACKETS,
-    hoodie: MEN_HOODIES,
-    shorts: MEN_SHORTS,
-    shoes: MEN_SHOES,
-    background:MEN_BACKGROUNDS
-  };
 
   // پارامترهای لباس برای prompt
-  outfitParams: OutfitParams = {
-    style: 'Casual',
-    colors: [],
-    fit: 'Regular',
-    fabric: undefined,
-    accessories: [],
-    reference: { mode: 'preset', presetKey: 'Casual' },
-    topType: undefined,
-    bottomType: undefined,
-    colorName: undefined,
-    color: undefined
-  };
 
   constructor(
-    private uploadService: UploadService,
     private toast: ToastService,
-    private cdRef: ChangeDetectorRef
+    private cdRef: ChangeDetectorRef,
+    private categoryService: ClosetCategoryService,
+    private itemsService: ClosetItemsService,
+    private closetService: Closet
   ) {
     addIcons({ cloudUploadOutline, downloadOutline, homeOutline });
   }
 
+  private fixImagePaths(categories: ResponseClosetCategory[], baseUrl: string) {
+  categories.forEach(cat => {
+    // اصلاح مسیر عکس دسته
+    cat.image = baseUrl + cat.image;
+
+    // اگر آیتم دارد → اصلاح مسیر آیتم‌ها
+    if (cat.items) {
+      cat.items = cat.items.map(item => ({
+        ...item,
+        image: baseUrl + item.image
+      }));
+    }
+
+    // اگر زیرگروه دارد → فراخوانی بازگشتی
+    if (cat.subCategories && cat.subCategories.length > 0) {
+      this.fixImagePaths(cat.subCategories, baseUrl);
+    }
+  });
+}
+
+
+
+
+  ngOnInit(): void {
+    this.isLoading = true;
+    this.categoryService.getAllMen(GroupType.Men).subscribe(categories => {
+      console.log('Men Categories:', categories);
+      this.fixImagePaths(categories, this.imageurl);
+      this.menCategoriesData = categories;
+
+      // انتخاب اولین دسته و دریافت آیتم‌های آن
+      if (categories && categories.length > 0) {
+        const firstCategory = categories[0];
+        this.activeCategory = firstCategory.title as MenCategoryKey;
+
+        // دریافت آیتم‌های اولین دسته از سرور
+        if (firstCategory.id) {
+          this.itemsService.getByCategory(firstCategory.id).subscribe(
+            (items: ClosetItems[]) => {
+              // اصلاح مسیر عکس
+              const itemsWithFixedPaths = items.map(item => ({
+                ...item,
+                image: this.imageurl + item.image
+              }));
+
+              // آپدیت دسته با آیتم‌های دریافت‌شده
+              firstCategory.items = itemsWithFixedPaths;
+              this.isLoading = false;
+              this.cdRef.markForCheck();
+              console.log(`📦 Initial: Loaded ${items.length} items for category: ${firstCategory.title}`);
+            },
+            (error: any) => {
+              console.error(`❌ Error loading items for ${firstCategory.title}:`, error);
+              this.isLoading = false;
+              this.toast.showError(`Failed to load items for ${firstCategory.title}`);
+            }
+          );
+        } else {
+          this.isLoading = false;
+        }
+      } else {
+        this.isLoading = false;
+      }
+    }, (error: any) => {
+      console.error('❌ Error loading categories:', error);
+      this.isLoading = false;
+      this.toast.showError('Failed to load categories');
+    });
+  }
+
 
   getActiveCategoryColor(): string {
+  if (!this.activeCategory) return '#ffffff';
   const colors = this.colorPalettes[this.activeCategory];
   return colors && colors.length ? colors[0] : '#ffffff';
 }
@@ -249,16 +290,18 @@ onSingleColorPicked(categoryKey: string, event: Event) {
   const newPalettes = { ...this.colorPalettes };
   newPalettes[categoryKey] = [color]; // فقط یک مقدار
   this.colorPalettes = newPalettes;
-  this.outfitParams.colors = this.getAllSelectedColors();
+  
 
   // 🟧 رنگ اصلی برای پرامپت
-  this.outfitParams.color = color;
-  this.outfitParams.colorName = color;
+  
+  
 
 const activeCat = this.activeCategory;
-const selected = this.selectedStyles[activeCat];
-if (selected) {
-  this.selectedItemPrompts[activeCat] = this.resolveItemPrompt(selected as MenCategory, activeCat);
+if (activeCat) {
+  const selected = this.selectedStyles[activeCat];
+  if (selected) {
+    this.selectedItemPrompts[activeCat] = this.resolveItemPrompt(selected);
+  }
 }
 
   this.cdRef.detectChanges();
@@ -275,16 +318,13 @@ removeSingleColorForCategory(categoryKey: string) {
   this.colorPalettes = newPalettes;
 
   // ۲. اگر رنگ انتخاب‌شده‌ی کلی مربوط به همین کتگوری بوده → پاکش کن
-  this.outfitParams.color = undefined;
-  this.outfitParams.colorName = undefined;
+  
+  
 
   // ۳. بازسازی پرامپت برای برگشت به رنگ پیش‌فرض
   const selected = this.selectedStyles[categoryKey];
   if (selected) {
-    this.selectedItemPrompts[categoryKey] = this.resolveItemPrompt(
-      selected as MenCategory,
-      categoryKey as MenCategoryKey
-    );
+    this.selectedItemPrompts[categoryKey] = this.resolveItemPrompt(selected);
   }
 
   this.cdRef.detectChanges();
@@ -314,7 +354,7 @@ onColorPicked(categoryKey: string, event: Event) {
   // 📁 انتخاب عکس کاربر
   // ------------------------------------------
   async onUserFileSelected(ev: Event) {
-    const input = ev.target as HTMLInputElement;
+    const input = ev.target as HTMLInputElement; 
     const file = input.files?.[0] ?? null;
 
     this.selectedUserFile = file;
@@ -353,61 +393,91 @@ onColorPicked(categoryKey: string, event: Event) {
   // 🔹 تب دسته‌بندی و انتخاب آیتم لباس
   // ------------------------------------------
 toggleCategory(key: MenCategoryKey) {
-  if (this.activeCategory === key) return;
-  this.activeCategory = key;
+  // Normalize key to lowercase
+  const normalizedKey = key.toLowerCase() as MenCategoryKey;
+
+  if (this.activeCategory?.toLowerCase() === normalizedKey) return;
+  this.activeCategory = normalizedKey;
   this.selectedStyle = null;
 
-  // پاک کردن پرامپت قبلی در کتگوری‌های دیگر (مخصوصاً برای جلوگیری از باقی ماندن 'hoodie')
+  // پاک کردن پرامپت قبلی در کتگوری‌های دیگر
   Object.keys(this.selectedItemPrompts).forEach(k => {
-    if (k !== key) this.selectedItemPrompts[k as MenCategoryKey] = null;
+    if (k.toLowerCase() !== normalizedKey) this.selectedItemPrompts[k as MenCategoryKey] = null;
   });
+
+  // دریافت آیتم‌های دسته از سرور
+  const category = this.menCategoriesData.find(cat => cat.title.toLowerCase() === key.toLowerCase());
+  if (category && category.id) {
+    this.isLoading = true;
+    this.itemsService.getByCategory(category.id).subscribe(
+      (items: ClosetItems[]) => {
+        // اصلاح مسیر عکس آیتم‌ها
+        const itemsWithFixedPaths = items.map(item => ({
+          ...item,
+          image: this.imageurl + item.image
+        }));
+
+        // آپدیت دسته فعال با آیتم‌های دریافت‌شده
+        if (category) {
+          category.items = itemsWithFixedPaths;
+        }
+        this.isLoading = false;
+        this.cdRef.markForCheck();
+        console.log(`📦 Loaded ${items.length} items for category: ${key}`);
+      },
+      (error:any) => {
+        console.error(`❌ Error loading items for ${key}:`, error);
+        this.isLoading = false;
+        this.toast.showError(`Failed to load items for ${key}`);
+      }
+    );
+  }
 }
 
 
-  getStylesForActiveCategory(): MenCategory[] {
-    const groups = this.stylesByCategory[this.activeCategory] ?? [];
-    const result: MenCategory[] = [];
-    for (const g of groups) {
-      result.push(...g.items);
-    }
-    return result;
+  getStylesForActiveCategory(): ClosetItems[] {
+    // اگر دسته فعال نیست یا items ندارد
+    if (!this.activeCategory) return [];
+
+    // آیتم‌های دسته فعال را برگردان
+    const activeCategory = this.menCategoriesData.find(cat => cat.title.toLowerCase() === this.activeCategory!.toLowerCase());
+    return activeCategory?.items || [];
   }
 
+toggleStyle(style: ClosetItems) {
 
-toggleStyle(style: MenCategory) {
+
+ 
+
+
   const cat = this.activeCategory;
   if (!cat) return;
 
-  const current = this.selectedStyles[cat];
-  this.selectedStyles[cat] = current?.name === style.name ? null : style;
-  // ذخیره‌ی پرامپت آماده‌ی ارسال برای همین کتگوری
-this.selectedItemPrompts[cat] = this.selectedStyles[cat]
-  ? this.resolveItemPrompt(this.selectedStyles[cat] as MenCategory, cat)
-  : null;
+  // Normalize category key to lowercase for consistency
+  const catKey = cat.toLowerCase() as MenCategoryKey;
+  const catLower = catKey; // Use the same normalized key
+  const current = this.selectedStyles[catKey];
+  this.selectedStyles[catKey] = current?.id === style.id ? null : style;
 
+  // ثبت پرامپت
+  this.selectedItemPrompts[catKey] = this.selectedStyles[catKey]
+    ? this.resolveItemPrompt(this.selectedStyles[catKey])
+    : null;
 
-  // 👕 بالاتنه
-  if (['shirt', 'tshirt', 'jacket', 'hoodie', 'suit'].includes(cat)) {
-    this.outfitParams.topType = this.selectedStyles[cat]?.name || undefined;
-  }
-  // 👖 پایین‌تنه
-  else if (['pants', 'jeans', 'shorts'].includes(cat)) {
-    this.outfitParams.bottomType = this.selectedStyles[cat]?.name || undefined;
-  }
-  // 👟 کفش
-  else if (['shoes'].includes(cat)) {
-    this.outfitParams.shoeType = this.selectedStyles[cat]?.name || undefined;
-  }
-  // 🏞️ بک‌گراند
-  else if (cat === 'background') {
-    const selected = this.selectedStyles[cat];
-    this.selectedBackgroundPrompt = selected ? (selected as any).prompt || selected.name : null;
+  // آپدیت outfitParams برای گروه‌ها
+  if (['shirt', 'tshirt', 'jacket', 'hoodie', 'suit'].includes(catLower)) {
+    
+  } else if (['pants', 'jeans', 'shorts'].includes(catLower)) {
+    
+  } else if (catLower === 'shoes') {
+    
+  } else if (catLower === 'background') {
+    const selected = this.selectedStyles[catKey];
+    this.selectedBackgroundPrompt = selected ? selected.prompt || selected.name : null;
   }
 
-  this.selectedItemPrompts[cat] = this.selectedStyles[cat]
-  ? this.resolveItemPrompt(this.selectedStyles[cat] as MenCategory, cat)
-  : null;
-
+  // بروزرسانی selectionSummary
+  this.updateSelectionSummary();
 
   this.cdRef.markForCheck();
 }
@@ -418,69 +488,82 @@ this.selectedItemPrompts[cat] = this.selectedStyles[cat]
     return !!this.selectedUserFile && Object.values(this.selectedStyles).some(s => !!s) || this.isCreativeMode;
   }
 
+  handleRefresh(event: any) {
+    // پاک کردن تمام انتخاب‌ها و بازگشت به حالت اولیه
+    this.isLoading = true;
+    this.previewUser = null;
+    this.processedPreview = null;
+    this.selectedUserFile = null;
+    this.selectedOutfitFile = null;
+    this.colorPalettes = {};
+    this.selectedStyles = Object.keys(this.selectedStyles).reduce((acc, key) => {
+      acc[key as MenCategoryKey] = null;
+      return acc;
+    }, {} as Record<MenCategoryKey, any | null>);
+    this.selectedItemPrompts = Object.keys(this.selectedItemPrompts).reduce((acc, key) => {
+      acc[key as MenCategoryKey] = null;
+      return acc;
+    }, {} as Record<MenCategoryKey, string | null>);
+    this.selectedBackgroundPrompt = null;
+    this.updateSelectionSummary();
+
+    // پایان رفرش
+    setTimeout(() => {
+      event.target.complete();
+       this.isLoading = false;
+      this.cdRef.markForCheck();
+    }, 500);
+  }
+
 
 
 
   get activeCategoryLabel(): string {
-    return this.menCategories.find(c => c.key === this.activeCategory)?.label ?? '';
+    return this.activeCategory ?? '';
   }
 
   // ------------------------------------------
   // ☁️ آپلود و پردازش
   // ------------------------------------------
 async uploadFile() {
- if (!this.selectedUserFile) return this.toast.showError('Please select your photo.');
-    if (!this.hasAnySelection()) return this.toast.showError('Please select at least one outfit item.');
+  if (!this.selectedUserFile) return this.toast.showError('Please select your photo.');
+  if (!this.hasAnySelection()) return this.toast.showError('Please select at least one outfit item.');
 
   try {
     this.isLoading = true;
-    this.processedPreview = null; 
+    this.processedPreview = null;
     this.cdRef.markForCheck();
 
-    // جمع‌آوری آیتم‌های انتخاب‌شده
-const selectedNames = Object.entries(this.selectedStyles)
-  .filter(([key, s]) => !!s && key !== 'background')
-  .map(([_, s]) => (s as MenCategory).name);
+    // جمع‌آوری پرامپت‌های آیتم‌های انتخاب‌شده
 
-const itemPrompts = Object.entries(this.selectedItemPrompts)
-  .filter(([k, v]) => !!v && k !== 'background')
-  .map(([_, v]) => v!);
+    // جمع‌آوری itemIds از selectedStyles
+    const itemIds = Object.entries(this.selectedStyles)
+      .filter(([k, v]) => !!v && k !== 'background')
+      .map(([_, v]) => v!.id)
+      .filter((id): id is number => id !== undefined);
 
-// 🎨 تزریق رنگ انتخابی کاربر به پرامپت‌ها
-const mainColor =
-  this.outfitParams.colorName?.toLowerCase() ||
-  this.outfitParams.color?.toLowerCase() ||
-  'neutral tone';
+    // استخراج اولین رنگ انتخاب‌شده
+    let selectedColor: string | undefined;
+    for (const categoryKey of Object.keys(this.colorPalettes)) {
+      if (this.colorPalettes[categoryKey]?.length > 0) {
+        selectedColor = this.colorPalettes[categoryKey][0];
+        break;
+      }
+    }
 
-const userHasColor = Boolean(this.outfitParams.colorName || this.outfitParams.color);
+    // ساخت MenPromptInput
+    const menPromptInput: MenPromptInput = {
+      colorPalettes: selectedColor,
+      selectedBackground: this.selectedBackgroundPrompt || undefined,
+      itemIds: itemIds,
+      isCreativeMode: this.isCreativeMode
+    };
 
-// فقط وقتی کاربر رنگ داده، {color} را جایگزین کن.
-// هرگز رنگ‌های متنی داخل پرامپت را با ریجکس عوض نکن تا defaultColor خراب نشود.
-const promptsForApi = userHasColor
-  ? itemPrompts.map(p => p.includes('{color}') ? p.replace(/\{color\}/gi, mainColor) : p)
-  : itemPrompts;
+    console.log('📤 Sending MenPromptInput:', menPromptInput);
 
-
-    const prompt =this.isCreativeMode
-      ? buildCreativePromptForMen()
-      :buildOutfitPrompt({
-      outfitStyle: this.outfitParams.style,
-      outfit: { ...this.outfitParams, selectedItems: [] }, 
-      colorPalettes: this.colorPalettes,
-      selectedBackground: this.selectedStyles['background']?.name,
-      selectedBackgroundPrompt: this.selectedBackgroundPrompt || undefined,
-      itemPrompts: promptsForApi,   // ← فقط همین
-
-    });
-
-
-    console.log('🧾 Generated Prompt:', prompt);
-    console.log('PROMPT LENGTH:', prompt.length);
-    console.log('🎨 Color Palettes:', this.colorPalettes);
-    console.log('🧥 Outfit Params:', this.outfitParams);
-
-    const res: UploadResponse = await lastValueFrom(
-      this.uploadService.uploadImage(this.selectedUserFile, prompt)
+    // آپلود فایل و داده‌ها به سرور
+    const res = await lastValueFrom(
+      this.closetService.uploadMenData(this.selectedUserFile, menPromptInput)
     );
 
     this.previewUser = URL.createObjectURL(this.selectedUserFile);
@@ -501,6 +584,7 @@ const promptsForApi = userHasColor
     this.cdRef.markForCheck();
   }
 }
+
 
 
 }

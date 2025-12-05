@@ -42,7 +42,8 @@ export const GIRL_CATEGORIES = [
   // 🎀 Accessories
   { key: 'bag', label: 'Bags', icon: './../../assets/styles/girls/Categories/Bags.jpg' },
   { key: 'hat', label: 'Hats', icon: './../../assets/styles/girls/Categories/Hats.jpg' },
-  { key: 'jewelry', label: 'Jewelry ', icon: './../../assets/styles/girls/Categories/Jewelry.jpg' } 
+  { key: 'jewelry', label: 'Jewelry ', icon: './../../assets/styles/girls/Categories/Jewelry.jpg' },
+  //  { key: 'background', label: 'Backgrounds', icon: './../../assets/styles/men/Categories/background.jpg' },
 ];
 
 

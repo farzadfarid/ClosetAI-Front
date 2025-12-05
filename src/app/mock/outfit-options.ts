@@ -154,7 +154,7 @@ export const MEN_CATEGORIES = [
   { key: 'hoodie', label: 'Hoodies', icon: './../../assets/styles/men/Categories/Hoodies-&-Sweatshirts.jpg' },
   { key: 'shorts', label: 'Shorts', icon: './../../assets/styles/men/Categories/Shorts.jpg' },
   { key: 'shoes', label: 'Shoes', icon: './../../assets/styles/men/Categories/Shoes.jpg' },
-  // { key: 'background', label: 'Backgrounds and Clothes (Try with AI)', icon: './../../assets/styles/men/Categories/background.jpg' },
+//  { key: 'background', label: 'Backgrounds', icon: './../../assets/styles/men/Categories/background.jpg' },
 ];
 
 
@@ -959,7 +959,7 @@ export const WOMEN_CATEGORIES = [
   { key: 'hat', label: 'Hats', icon: './../../assets/styles/women/Categories/Hats.jpg' },
 
   // 🏞 Background
-  // { key: 'background', label: 'Backgrounds and Clothes (Try with AI)', icon: './../../assets/styles/men/Categories/background.jpg' },
+   { key: 'background', label: 'Backgrounds', icon: './../../assets/styles/men/Categories/background.jpg' },
 ];
 
 

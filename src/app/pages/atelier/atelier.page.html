@@ -1,0 +1,111 @@
+@if(isLoading){
+  <app-loading></app-loading>
+}
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/home">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <img slot="start" src="assets/images/logo1.png" alt="App Logo" class="app-logo" />
+    <ion-title slot="start">AI Atelier Studio 🎨</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="modern-page" dir="ltr">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="upload-container">
+    <h2 class="page-title" style="text-align:center;">Upload Your Portrait 📸</h2>
+
+    <!-- 📸 Upload Photo -->
+    <div class="upload-area">
+      <label for="userUpload" class="upload-label">
+        <ion-icon name="cloud-upload-outline" class="upload-icon"></ion-icon>
+        <span class="upload-text">Choose Your Photo</span>
+      </label>
+      <input
+        id="userUpload"
+        type="file"
+        accept="image/*"
+        (change)="onUserFileSelected($event)"
+        class="file-input"
+        #userFileInput
+      />
+    </div>
+
+    <!-- 🔍 Preview -->
+    <div *ngIf="previewUser" class="card preview-card hero-preview">
+      <div class="image-wrapper" [class.result-mode]="processedPreview">
+        <img
+          [src]="processedPreview ? processedPreview : previewUser"
+          class="preview-image hero-image"
+          alt="Main Image"
+        />
+
+        <img
+          *ngIf="processedPreview"
+          [src]="previewUser"
+          class="original-thumb"
+          alt="Original Thumbnail"
+        />
+
+        <a
+          *ngIf="processedPreview"
+          [href]="processedPreview"
+          download="processed-portrait.jpg"
+          class="save-icon"
+          title="Save image"
+          target="_blank"
+        >
+          <ion-icon name="download-outline"></ion-icon>
+        </a>
+      </div>
+
+      <ion-button
+        expand="block"
+        class="upload-btn"
+        (click)="uploadFile()"
+        [disabled]="!hasAnySelection()"
+      >
+        Upload & Process
+      </ion-button>
+    </div>
+
+    <!-- 🔹 Category Tabs -->
+    <div class="category-tabs">
+      <div
+        *ngFor="let cat of atelierCategoriesData"
+        (click)="toggleCategory(cat.title)"
+        [class.active]="activeCategory === cat.title"
+        class="tab-item"
+      >
+        <img [src]="cat.image" [alt]="cat.title" />
+        <p>{{ cat.title }}</p>
+      </div>
+    </div>
+
+    <!-- 🎨 Style Grid -->
+    <div *ngIf="activeCategory" class="style-grid">
+      <div class="category-header">
+        <span>{{ activeCategoryLabel }}</span>
+      </div>
+
+      <div class="style-grid-inner">
+        <div
+          *ngFor="let style of getStylesForActiveCategory()"
+          (click)="toggleStyle(style)"
+          class="style-card"
+          [class.selected]="selectedStyles[activeCategory]?.id === style.id"
+        >
+          <img [src]="style.image" [alt]="style.name" />
+          <p>{{ style.name }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

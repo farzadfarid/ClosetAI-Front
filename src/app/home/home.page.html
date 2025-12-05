@@ -1,3 +1,7 @@
+@if(isLoading){
+  <app-loading></app-loading>
+}
+
 <ion-header translucent> 
   <ion-toolbar class="dark-toolbar">
     <div class="toolbar-content">
@@ -8,57 +12,29 @@
 </ion-header>
 
 <ion-content class="home-content fullscreen">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <div class="intro-section">
-    <h1 class="main-title">Welcome to 
-      <br />
-      <span>ClosetAI</span>
+    <h1 class="main-title">
+      <span>Closet AI Studio</span>
     </h1>
     <p class="subtitle">
       Try outfits on yourself with AI.<br />
-      Choose your style — for <b>Women</b> or <b>Men</b>.
+    
     </p>
   </div>
 
   <div class="card-container">
-   <ion-card class="option-card" (click)="goToPage('outfit-girl')">
-      <img src="./../../assets/styles/girls/girl.jpg" alt="girl" />
-      <ion-card-header>
-        <ion-card-title>Girls</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        Dresses, Tops, Pants, and more
-      </ion-card-content>
-    </ion-card>
-
-
-    <ion-card class="option-card" (click)="goToPage('outfit-women')">
-      <img src="./../../assets/styles/women/women.jpg" alt="Women" />
-      <ion-card-header>
-        <ion-card-title>Women</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        Dresses, Tops, Pants, and more
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card class="option-card" (click)="goToPage('outfit-boy')">
-      <img src="./../../assets/styles/boys/boy.jpg" alt="Boy" />
-      <ion-card-header>
-        <ion-card-title>Boys</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        Shirts, Jackets, Trousers, and more
-      </ion-card-content>
-    </ion-card>
-
-    <ion-card class="option-card" (click)="goToPage('outfit')">
-      <img src="./../../assets/styles/men/men.jpg" alt="Men" />
-      <ion-card-header>
-        <ion-card-title>Men</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        Shirts, Jackets, Trousers, and more
-      </ion-card-content>
-    </ion-card>
+        @for (category of categories; track category.id) {
+          <ion-card class="option-card" (click)="goToPage(category.id)">
+            <img [src]="category.image" [alt]="category.title" />
+            <ion-card-header>
+              <ion-card-title>{{ category.title }}</ion-card-title>
+            </ion-card-header>
+          </ion-card>
+        }
+   
   </div>
 </ion-content>

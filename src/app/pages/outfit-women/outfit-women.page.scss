@@ -14,10 +14,9 @@
 .face-section {
   max-width: 520px;
   width: 100%;
-  margin: 0 auto 28px auto;
+  margin: 0 auto 120px auto;
   padding: 0 12px;
   box-sizing: border-box;
-  margin-bottom: 30px;
 }
 
 /* Header & titles */
@@ -402,9 +401,9 @@ ion-button.selected-btn[fill="outline"]::part(native) {
     }
 
     &.selected {
-      border: 2px solid var(--ion-color-primary, #3880ff);
+      border: 2px solid #e6564c;
       transform: scale(1.05);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 10px rgba(230, 86, 76, 0.25);
     }
   }
 
@@ -502,6 +501,17 @@ ion-button.selected-btn[fill="outline"]::part(native) {
     --handle-width: 20px;
     --handle-height: 20px;
     transform: scale(0.9);
+  }
+
+  .compact-color-input {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    margin-left: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.05);
   }
 }
 

@@ -2,6 +2,11 @@
   <app-loading></app-loading>
 }
 
+<app-selection-summary
+  [selections]="selectionSummary"
+  (removeSelection)="onRemoveSelection($event)"
+  (clearAll)="onClearAllSelections()">
+</app-selection-summary>
 
 <ion-header>
   <ion-toolbar>
@@ -16,6 +21,10 @@
 </ion-header>
 
 <ion-content class="modern-page" dir="ltr">
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <div class="upload-container">
     <h2 class="page-title" style="text-align: center;">Upload Your Photo 📸</h2>
   
@@ -55,39 +64,38 @@
           <ion-icon name="download-outline"></ion-icon>
         </a>
       </div>
-
-<div class="mode-toggle">
-  <span class="label-text">Let AI harmonize outfit and background</span>
-  <ion-toggle [(ngModel)]="isCreativeMode"  name="creativeMode" mode="ios"></ion-toggle>
-</div>
-    <!--     <ion-card class="param-card">
-          <ion-card-header><ion-card-title>Output Mode</ion-card-title></ion-card-header>
-          <ion-card-content>
-            <ion-segment [value]="outputMode" (ionChange)="onOutputModeChange($event)">
-              <ion-segment-button value="single"><ion-label>Single</ion-label></ion-segment-button>
-              <ion-segment-button value="four-view"><ion-label>Three Views</ion-label></ion-segment-button>
-            </ion-segment>
-          </ion-card-content>
-        </ion-card> -->
-
-
-
-      <ion-button expand="block"
-                  class="upload-btn"
-                  (click)="uploadFile()"
-                  [disabled]="!hasAnySelection()">
-        Upload & Process
-      </ion-button>
     </div>
+
+    <div class="mode-toggle">
+      <span class="label-text">Let AI harmonize outfit and background</span>
+      <ion-toggle [(ngModel)]="isCreativeMode"  name="creativeMode" mode="ios"></ion-toggle>
+
+      <!-- 🎨 Color Picker (Compact) - فقط کنار toggle -->
+      <input
+        *ngIf="activeCategory && activeCategory !== 'background'"
+        type="color"
+        [value]="getActiveCategoryColor()"
+        (change)="onSingleColorPicked(activeCategory, $event)"
+        class="compact-color-input"
+        title="Pick color for {{ activeCategoryLabel }}"
+      />
+    </div>
+
+    <ion-button expand="block"
+                class="upload-btn"
+                (click)="uploadFile()"
+                [disabled]="!hasAnySelection()">
+      Upload & Process
+    </ion-button>
 
     <!-- 🔹 Men Categories (horizontal tabs) -->
     <div class="category-tabs">
-      <div *ngFor="let cat of menCategories"
-           (click)="toggleCategory(cat.key)"
-           [class.active]="activeCategory === cat.key"
+      <div *ngFor="let cat of menCategoriesData"
+           (click)="toggleCategory(cat.title)"
+           [class.active]="activeCategory?.toLowerCase() === cat.title.toLowerCase()"
            class="tab-item">
-        <img [src]="cat.icon" [alt]="cat.label" />
-        <p>{{ cat.label }}</p>
+        <img [src]="cat.image" [alt]="cat.title" />
+        <p>{{ cat.title }}</p>
       </div>
     </div>
 
@@ -101,58 +109,11 @@
         <div *ngFor="let style of getStylesForActiveCategory()"
              (click)="toggleStyle(style)"
              class="style-card"
-             [class.selected]="selectedStyles[activeCategory]?.name === style.name">
+             [class.selected]="activeCategory && selectedStyles[activeCategory.toLowerCase()]?.id === style.id">
           <img [src]="style.image" [alt]="style.name" />
           <p>{{ style.name }}</p>
         </div>
       </div>
-
-      <!-- 🎨 Color Picker per Category -->
-  <ion-card class="param-card" style="margin-top:14px; margin-bottom: 100px;">
-  <ion-card-header>
-    <ion-card-title>Colors for {{ activeCategoryLabel }}</ion-card-title>
-  </ion-card-header>
-<ion-card-content>
-  <!-- 🎨 انتخاب رنگ -->
-  <div class="btn-group" style="justify-content:flex-start; gap:10px; align-items:center;">
-    <input
-      type="color"
-      [value]="getActiveCategoryColor()"
-      (change)="onSingleColorPicked(activeCategory, $event)"
-      class="color-input"
-    />
-
-    <ion-button
-      *ngIf="colorPalettes[activeCategory]?.length" 
-      size="small"
-      color="danger"
-      fill="outline"
-      (click)="removeSingleColorForCategory(activeCategory)"
-    >
-      Remove Color
-    </ion-button>
-  </div>
-
-  <!-- نمایش رنگ انتخابی -->
-  <div
-    class="color-preview"
-    *ngIf="colorPalettes[activeCategory]?.length"
-    style="margin-top:10px;"
-  >
-    <div
-      class="color-dot"
-      [style.background]="colorPalettes[activeCategory][0]"
-      [title]="colorPalettes[activeCategory][0]"
-      style="cursor:pointer;"
-    ></div>
-    <ion-note color="medium" style="display:block; margin-top:6px;">
-      Current color: {{ colorPalettes[activeCategory][0] }}
-    </ion-note>
-  </div>
-</ion-card-content>
-
-</ion-card>
-
     </div>
   </div>
 </ion-content>

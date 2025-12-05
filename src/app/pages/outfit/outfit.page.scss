@@ -14,10 +14,9 @@
 .face-section {
   max-width: 520px;
   width: 100%;
-  margin: 0 auto 28px auto;
+  margin: 0 auto 120px auto;
   padding: 0 12px;
   box-sizing: border-box;
-  margin-bottom: 30px;
 }
 
 /* Header & titles */
@@ -173,14 +172,14 @@
 
 /* Parameter card (glassy) */
 .param-card {
-  flex: 0 0 240px;  scroll-snap-align: start; border-radius: 18px;
-  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  flex: 0 0 240px; scroll-snap-align: start; border-radius: 18px;
+   backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
   background: rgba(40, 40, 40, 0.45); border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
   transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.3s ease;
-  width: 100%;
+    width: 100%;
   margin: 0 auto;
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 .param-card:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45); background: rgba(55, 55, 55, 0.55); }
 .param-card ion-card-title { font-size: 0.9rem; font-weight: 600; color: #e3e3e3; text-align: center; margin-bottom: 10px; letter-spacing: 0.2px; }
@@ -339,6 +338,12 @@ ion-button.selected-btn[fill="outline"]::part(native) {
 
 
 
+
+
+
+
+
+
 .style-grid {
   margin: 1rem 0;
 
@@ -396,9 +401,9 @@ ion-button.selected-btn[fill="outline"]::part(native) {
     }
 
     &.selected {
-      border: 2px solid var(--ion-color-primary, #3880ff);
+      border: 2px solid #e6564c;
       transform: scale(1.05);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 10px rgba(230, 86, 76, 0.25);
     }
   }
 
@@ -463,14 +468,6 @@ ion-button.selected-btn[fill="outline"]::part(native) {
 
 
 
-/* ===== Toolbar ===== */
-.dark-toolbar {
-  --background: rgba(25, 25, 25, 0.6);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-
 .mode-toggle {
   display: flex;
   align-items: center;
@@ -504,6 +501,17 @@ ion-button.selected-btn[fill="outline"]::part(native) {
     --handle-width: 20px;
     --handle-height: 20px;
     transform: scale(0.9);
+  }
+
+  .compact-color-input {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    margin-left: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.05);
   }
 }
 
